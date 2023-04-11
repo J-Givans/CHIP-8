@@ -1,0 +1,8 @@
+# Ignore the build directory
+build
+
+# Ignore clangd cache directory
+.cache
+
+# Ignore vscode directory
+.vscode
