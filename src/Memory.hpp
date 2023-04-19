@@ -16,11 +16,11 @@ namespace chip8
         /// \brief Default constructor
         constexpr Memory() noexcept;
 
-        /// \brief Load the font set into the memory buffer
-        constexpr void loadFontSet() noexcept;
-
     private:
         std::array<std::uint8_t, 1024 * 4> m_memory = {0};
+
+        /// \brief Load the font set into the memory buffer
+        constexpr void loadFontSet() noexcept;
     };
 
     constexpr Memory::Memory() noexcept
