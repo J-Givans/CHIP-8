@@ -106,4 +106,20 @@ namespace chip8
 
         reg.registers[Vx] ^= reg.registers[Vy];
     }
+
+    void op8xy4(Registers& reg) noexcept
+    {
+        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+        uint8_t Vy = (opcode & 0x00F0u) >> 4u;
+        uint16_t sum = reg.registers[Vx] + reg.registers[Vy];
+
+        if (sum > 255) {
+            reg.registers[0xF] = 1;
+        }
+        else {
+            reg.registers[0xF] = 0;
+        }
+
+        reg.registers[Vx] = sum & 0xFFu;
+    }
 }
