@@ -38,6 +38,10 @@ namespace chip8
     /// \brief LD Vx, byte
     /// \brief Set Vx = kk
     void op6xkk(Registers& reg);
+
+    /// \brief ADD Vx, byte
+    /// \brief Set Vx = Vk + kk
+    void op7xkk(Registers& reg);
 }
 
 #endif

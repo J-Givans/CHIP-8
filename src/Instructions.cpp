@@ -66,4 +66,12 @@ namespace chip8
 
         reg.registers[Vx] = byte;
     }
+
+    void op7xkk(Registers& reg)
+    {
+        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+        uint8_t byte = opcode & 0x00FFu;
+
+        reg.registers[Vx] += byte;
+    }
 }
