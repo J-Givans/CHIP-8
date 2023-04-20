@@ -20,8 +20,11 @@ namespace chip8
     {
         Expects(memoryBuffer.size() > FontSetSize);
 
-        for (std::size_t i = 0; i < FontSetSize; ++i) {
-            memoryBuffer[FontSetStartAddress + i] = FontSet[i];
+        std::size_t i {0};
+        
+        for (auto const& font : FontSet) {
+            memoryBuffer[FontSetStartAddress + i] = font;
+            ++i;
         }
     }
 
