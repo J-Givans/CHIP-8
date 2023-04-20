@@ -10,7 +10,15 @@ namespace chip8
     {
     public:
         std::array<std::uint32_t, 64 * 32> videoBuffer = {0};
+
+        /// \brief Set the entire video buffer to zeros
+        constexpr void clear() noexcept;
     };
+
+    constexpr void Video::clear() noexcept
+    {
+        videoBuffer.fill(0);
+    }
 }
 
 #endif
