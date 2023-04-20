@@ -9,7 +9,7 @@ namespace chip8
     class Video
     {
     public:
-        std::array<std::uint32_t, 64* 32> videoBuffer = {0};
+        std::array<std::uint32_t, 64 * 32> videoBuffer = {0};
     };
 }
 
