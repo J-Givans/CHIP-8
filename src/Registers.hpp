@@ -3,9 +3,14 @@
 
 #include <array>
 #include <cstdint>
+#include <random>
 
 namespace chip8
 {
+    inline std::random_device rd;
+    inline std::mt19937 generator(rd());
+    inline std::uniform_int_distribution<std::uint8_t> distribution(0, 255);
+
     class Registers
     {
     public:
