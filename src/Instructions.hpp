@@ -92,6 +92,10 @@ namespace chip8
     /// \brief LD I, addr
     /// \brief Set I = nnn
     void opAnnn(Registers& reg) noexcept;
+
+    /// \brief JP V0, addr
+    /// \brief Jump to location nnn + V0
+    void opBnnn(Registers& reg) noexcept;
 }
 
 #endif

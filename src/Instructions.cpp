@@ -190,4 +190,10 @@ namespace chip8
         uint16_t address = opcode & 0x0FFFu;
         reg.indexRegister = address;
     }
+
+    void opBnnn(Registers& reg) noexcept
+    {
+        uint16_t address = opcode & 0x0FFFu;
+        reg.pc = reg.registers[0] + address;
+    }
 }
