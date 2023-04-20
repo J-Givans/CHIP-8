@@ -11,6 +11,7 @@
 
 namespace chip8
 {
+    inline constexpr unsigned int StartAddress = 0x200;
     inline constexpr unsigned int FontSetStartAddress = 0x50;
 
     /// \brief Load the font set into the memory buffer
@@ -42,6 +43,10 @@ namespace chip8
 
         /// \brief Load the font set into the memory buffer
         constexpr void loadFontSet() noexcept;
+
+        /// \brief Load a ROM into the memory buffer
+        /// \param[in] filename The path to the ROM file
+        void loadRom(char const* filename);
     };
 
     constexpr Memory::Memory() noexcept
