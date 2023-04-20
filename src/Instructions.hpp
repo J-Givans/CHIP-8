@@ -144,6 +144,10 @@ namespace chip8
     /// \details The interpreter takes the decimal value of Vx and places the hundreds digit in memory at location I, 
     /// \details the tens digit at location I + 1, and the ones digit at location I + 2
     void opFx33(Memory& memory, Registers& reg);
+
+    /// \brief LD [I], Vx
+    /// \brief Store registers V0 through Vx in memory starting at location I
+    void opFx55(Memory& memory, Registers& reg);
 }
 
 #endif
