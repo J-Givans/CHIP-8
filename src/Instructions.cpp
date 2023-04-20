@@ -196,4 +196,12 @@ namespace chip8
         uint16_t address = opcode & 0x0FFFu;
         reg.pc = reg.registers[0] + address;
     }
+
+    void opCxkk(Registers& reg) noexcept
+    {
+        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+        uint8_t byte = opcode & 0x00FFu;
+
+        reg.registers[Vx] = distribution(generator) & byte;
+    }
 }
