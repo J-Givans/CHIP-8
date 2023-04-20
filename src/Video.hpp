@@ -6,10 +6,13 @@
 
 namespace chip8
 {
+    inline constexpr unsigned int VideoWidth = 64;
+    inline constexpr unsigned int VideoHeight = 32;
+
     class Video
     {
     public:
-        std::array<std::uint32_t, 64 * 32> videoBuffer = {0};
+        std::array<std::uint32_t, VideoWidth * VideoHeight> videoBuffer = {0};
 
         /// \brief Set the entire video buffer to zeros
         constexpr void clear() noexcept;
