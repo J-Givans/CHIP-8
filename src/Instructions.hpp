@@ -134,6 +134,10 @@ namespace chip8
     /// \brief ADD I, Vx
     /// \brief Set I = I + Vx
     void opFx1E(Registers& reg);
+
+    /// \brief LD F, Vx
+    /// \brief Set I = location of sprite for digit Vx
+    void opFx29(Registers& reg);
 }
 
 #endif
