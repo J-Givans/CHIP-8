@@ -30,6 +30,10 @@ namespace chip8
     /// \brief SNE Vx, byte
     /// \brief Skip next instruction if Vx != kk
     void op4xkk(Registers& reg);
+
+    /// \brief SE Vx, Vy
+    /// \brief Skip next instruction if Vx = Vy
+    void op5xy0(Registers& reg);
 }
 
 #endif
