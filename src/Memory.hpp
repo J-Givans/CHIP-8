@@ -3,6 +3,7 @@
 
 #include <array>
 #include <cstdint>
+#include <algorithm>
 
 #include <gsl/assert>
 
@@ -26,6 +27,8 @@ namespace chip8
             memoryBuffer[FontSetStartAddress + i] = font;
             ++i;
         }
+
+        Ensures(std::equal(FontSet.cbegin(), FontSet.cend(), memoryBuffer.cbegin() + FontSetStartAddress));
     }
 
     class Memory
