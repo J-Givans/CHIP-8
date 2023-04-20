@@ -246,4 +246,13 @@ namespace chip8
             reg.pc += 2;
         }
     }
+
+    void opExA1(Registers& reg)
+    {
+        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+
+        if (uint8_t key = reg.registers[Vx]; not KeyPad[key]) {
+            reg.pc += 2;
+        }
+    }
 }
