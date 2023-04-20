@@ -35,11 +35,10 @@ namespace chip8
     class Memory
     {
     public:
+        std::array<std::uint8_t, 1024 * 4> m_memory = {0};
+
         /// \brief Default constructor
         constexpr Memory() noexcept;
-
-    private:
-        std::array<std::uint8_t, 1024 * 4> m_memory = {0};
 
         /// \brief Load the font set into the memory buffer
         constexpr void loadFontSet() noexcept;
