@@ -24,6 +24,10 @@ namespace chip8
         /// \brief Get the element at the top of the stack
         /// \returns A reference to the most-recently pushed element
         std::uint16_t& top();
+
+        /// \brief Push an element to the top of the stack
+        /// \param[in] value The element to be pushed to the top of the stack
+        void push(std::uint16_t value);
     };
 }
 

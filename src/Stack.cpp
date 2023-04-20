@@ -16,4 +16,9 @@ namespace chip8
     {
         return stack.top();
     }
+
+    void Stack::push(std::uint16_t value)
+    {
+        stack.push(value);
+    }
 }
