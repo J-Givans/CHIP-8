@@ -74,6 +74,11 @@ namespace chip8
     /// \brief Set Vx Vx SHR 1
     /// \details If the least significant bit of Vx is 1, then VF is set to 1, otherwise 0. Then Vx is divided by 2
     void op8xy6(Registers& reg) noexcept;
+
+    /// \brief SUBN Vx, Vy
+    /// \brief Set Vx = Vy - Vx, and set VF = NOT borrow
+    /// \details If Vy > Vx, set VF = 1, otherwise 0. Then subtract Vx from Vy, and store the results in Vx
+    void op8xy7(Registers& reg) noexcept;
 }
 
 #endif

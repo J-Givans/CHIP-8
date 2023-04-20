@@ -148,4 +148,19 @@ namespace chip8
         
         reg.registers[Vx] >>= 1;
     }
+
+    void op8xy7(Registers& reg) noexcept
+    {
+        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+        uint8_t Vy = (opcode & 0x00F0u) >> 4u;
+
+        if (reg.registers[Vy] > reg.registers[Vx]) {
+            reg.registers[0xF] = 1;
+        }
+        else {
+            reg.registers[0xF] = 0;
+        }
+
+        reg.registers[Vx] = reg.registers[Vy] - reg.registers[Vx];
+    }
 }
