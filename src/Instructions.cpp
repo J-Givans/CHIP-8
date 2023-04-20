@@ -12,4 +12,11 @@ namespace chip8
         stack.pop();
         reg.pc = stack.top();
     }
+
+    void op1nnn(Registers& reg) noexcept
+    {
+        // A jump doesn't remember its origin, so no stack interaction is required
+        std::uint16_t address = opcode & 0x0FFFu;
+        reg.pc = address;
+    }
 }
