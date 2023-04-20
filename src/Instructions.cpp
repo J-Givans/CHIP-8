@@ -90,4 +90,12 @@ namespace chip8
 
         reg.registers[Vx] |= reg.registers[Vy];
     }
+
+    void op8xy2(Registers& reg)
+    {
+        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+        uint8_t Vy = (opcode & 0x00F0u) >> 4u;
+
+        reg.registers[Vx] &= reg.registers[Vy];
+    }
 }
