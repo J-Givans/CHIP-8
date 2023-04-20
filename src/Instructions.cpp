@@ -19,4 +19,12 @@ namespace chip8
         std::uint16_t address = opcode & 0x0FFFu;
         reg.pc = address;
     }
+
+    void op2nnn(Stack& stack, Registers& reg)
+    {
+        std::uint16_t address = opcode & 0x0FFFu;
+
+        stack.push(reg.pc);
+        reg.pc = address;
+    }
 }

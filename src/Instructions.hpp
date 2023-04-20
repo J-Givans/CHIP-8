@@ -20,6 +20,9 @@ namespace chip8
     /// \brief Jump to location nnn
     /// \details The interpreter sets the program counter to nnn
     void op1nnn(Registers& reg) noexcept;
+
+    /// \brief Call subroutine at nnn
+    void op2nnn(Stack& stack, Registers& reg);
 }
 
 #endif
