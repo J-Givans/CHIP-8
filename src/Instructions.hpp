@@ -122,6 +122,10 @@ namespace chip8
     /// \brief LD Vx, K
     /// \brief Wait for a key press, and then store the value of the key pressed in Vx
     void opFx0A(Registers& reg);
+
+    /// \brief LD DT, Vx
+    /// \brief Set the delay timer to Vx
+    void opFx15(Registers const& reg, CPU& cpu) noexcept;
 }
 
 #endif

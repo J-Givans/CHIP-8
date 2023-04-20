@@ -320,4 +320,10 @@ namespace chip8
             reg.pc -= 2;
         }
     }
+
+    void opFx15(Registers const& reg, CPU& cpu) noexcept
+    {
+        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+        cpu.delayTimer = reg.registers[Vx];
+    }
 }
