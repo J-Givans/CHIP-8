@@ -326,4 +326,10 @@ namespace chip8
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
         cpu.delayTimer = reg.registers[Vx];
     }
+
+    void opFx18(Registers& reg, CPU& cpu)
+    {
+        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+        cpu.soundTimer = reg.registers[Vx];
+    }
 }
