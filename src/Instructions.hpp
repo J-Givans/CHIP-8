@@ -130,6 +130,10 @@ namespace chip8
     /// \brief LD ST, Vx
     /// \brief Set sound timer = Vx
     void opFx18(Registers& reg, CPU& cpu);
+
+    /// \brief ADD I, Vx
+    /// \brief Set I = I + Vx
+    void opFx1E(Registers& reg);
 }
 
 #endif
