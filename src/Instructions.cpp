@@ -38,7 +38,7 @@ namespace chip8
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
         uint8_t byte = opcode & 0x00FFu;
 
-        if (reg.registers[Vx] == byte) {
+        if (reg.byteRegisters[Vx] == byte) {
             reg.pc += 2;
         }
     }
@@ -48,7 +48,7 @@ namespace chip8
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
         uint8_t byte = opcode & 0x00FFu;
 
-        if (reg.registers[Vx] != byte) {
+        if (reg.byteRegisters[Vx] != byte) {
             reg.pc += 2;
         }
     }
@@ -58,7 +58,7 @@ namespace chip8
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
         uint8_t Vy = (opcode & 0x00F0u) >> 4u;
 
-        if (reg.registers[Vx] == reg.registers[Vy]) {
+        if (reg.byteRegisters[Vx] == reg.byteRegisters[Vy]) {
             reg.pc += 2;
         }
     }
@@ -68,7 +68,7 @@ namespace chip8
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
         uint8_t byte = opcode & 0x00FFu;
 
-        reg.registers[Vx] = byte;
+        reg.byteRegisters[Vx] = byte;
     }
 
     void op7xkk(Registers& reg)
@@ -76,7 +76,7 @@ namespace chip8
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
         uint8_t byte = opcode & 0x00FFu;
 
-        reg.registers[Vx] += byte;
+        reg.byteRegisters[Vx] += byte;
     }
 
     void op8xy0(Registers& reg)
@@ -84,7 +84,7 @@ namespace chip8
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
         uint8_t Vy = (opcode & 0x00F0u) >> 4u;
 
-        reg.registers[Vx] = reg.registers[Vy];
+        reg.byteRegisters[Vx] = reg.byteRegisters[Vy];
     }
 
     void op8xy1(Registers& reg)
@@ -92,7 +92,7 @@ namespace chip8
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
         uint8_t Vy = (opcode & 0x00F0u) >> 4u;
 
-        reg.registers[Vx] |= reg.registers[Vy];
+        reg.byteRegisters[Vx] |= reg.byteRegisters[Vy];
     }
 
     void op8xy2(Registers& reg)
@@ -100,7 +100,7 @@ namespace chip8
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
         uint8_t Vy = (opcode & 0x00F0u) >> 4u;
 
-        reg.registers[Vx] &= reg.registers[Vy];
+        reg.byteRegisters[Vx] &= reg.byteRegisters[Vy];
     }
 
     void op8xy3(Registers& reg) noexcept
@@ -108,23 +108,23 @@ namespace chip8
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
         uint8_t Vy = (opcode & 0x00F0u) >> 4u;
 
-        reg.registers[Vx] ^= reg.registers[Vy];
+        reg.byteRegisters[Vx] ^= reg.byteRegisters[Vy];
     }
 
     void op8xy4(Registers& reg) noexcept
     {
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
         uint8_t Vy = (opcode & 0x00F0u) >> 4u;
-        uint16_t sum = reg.registers[Vx] + reg.registers[Vy];
+        uint16_t sum = reg.byteRegisters[Vx] + reg.byteRegisters[Vy];
 
         if (sum > 255) {
-            reg.registers[0xF] = 1;
+            reg.byteRegisters[0xF] = 1;
         }
         else {
-            reg.registers[0xF] = 0;
+            reg.byteRegisters[0xF] = 0;
         }
 
-        reg.registers[Vx] = sum & 0xFFu;
+        reg.byteRegisters[Vx] = sum & 0xFFu;
     }
 
     void op8xy5(Registers& reg) noexcept
@@ -132,14 +132,14 @@ namespace chip8
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
         uint8_t Vy = (opcode & 0x00F0u) >> 4u;
 
-        if (reg.registers[Vx] > reg.registers[Vy]) {
-            reg.registers[0xF] = 1;
+        if (reg.byteRegisters[Vx] > reg.byteRegisters[Vy]) {
+            reg.byteRegisters[0xF] = 1;
         }
         else {
-            reg.registers[0xF] = 0;
+            reg.byteRegisters[0xF] = 0;
         }
 
-        reg.registers[Vx] -= reg.registers[Vy];
+        reg.byteRegisters[Vx] -= reg.byteRegisters[Vy];
     }
 
     void op8xy6(Registers& reg) noexcept
@@ -148,9 +148,9 @@ namespace chip8
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
 
         // Save LSB in VF
-        reg.registers[0xF] = (reg.registers[Vx] & 0x1u);
+        reg.byteRegisters[0xF] = (reg.byteRegisters[Vx] & 0x1u);
         
-        reg.registers[Vx] >>= 1;
+        reg.byteRegisters[Vx] >>= 1;
     }
 
     void op8xy7(Registers& reg) noexcept
@@ -158,14 +158,14 @@ namespace chip8
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
         uint8_t Vy = (opcode & 0x00F0u) >> 4u;
 
-        if (reg.registers[Vy] > reg.registers[Vx]) {
-            reg.registers[0xF] = 1;
+        if (reg.byteRegisters[Vy] > reg.byteRegisters[Vx]) {
+            reg.byteRegisters[0xF] = 1;
         }
         else {
-            reg.registers[0xF] = 0;
+            reg.byteRegisters[0xF] = 0;
         }
 
-        reg.registers[Vx] = reg.registers[Vy] - reg.registers[Vx];
+        reg.byteRegisters[Vx] = reg.byteRegisters[Vy] - reg.byteRegisters[Vx];
     }
 
     void op8xyE(Registers& reg) noexcept
@@ -174,9 +174,9 @@ namespace chip8
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
 
         // Save MSB in VF
-        reg.registers[0xF] = (reg.registers[Vx] & 0x80u) >> 7u;
+        reg.byteRegisters[0xF] = (reg.byteRegisters[Vx] & 0x80u) >> 7u;
         
-        reg.registers[Vx] <<= 1;
+        reg.byteRegisters[Vx] <<= 1;
     }
 
     void op9xy0(Registers& reg) noexcept
@@ -184,7 +184,7 @@ namespace chip8
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
         uint8_t Vy = (opcode & 0x00F0u) >> 4u;
 
-        if (reg.registers[Vx] != reg.registers[Vy]) {
+        if (reg.byteRegisters[Vx] != reg.byteRegisters[Vy]) {
             reg.pc += 2;
         }
     }
@@ -198,7 +198,7 @@ namespace chip8
     void opBnnn(Registers& reg) noexcept
     {
         uint16_t address = opcode & 0x0FFFu;
-        reg.pc = reg.registers[0] + address;
+        reg.pc = reg.byteRegisters[0] + address;
     }
 
     void opCxkk(Registers& reg) noexcept
@@ -206,7 +206,7 @@ namespace chip8
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
         uint8_t byte = opcode & 0x00FFu;
 
-        reg.registers[Vx] = distribution(generator) & byte;
+        reg.byteRegisters[Vx] = distribution(generator) & byte;
     }
 
     void opDxyn(Registers& reg, Memory& mem, Video& video)
@@ -216,10 +216,10 @@ namespace chip8
         uint8_t height = opcode & 0x000Fu;
 
         // Wrap if going beyond the screen boundaries
-        uint8_t xPos = reg.registers[Vx] % VideoWidth;
-        uint8_t yPos = reg.registers[Vy] % VideoHeight;
+        uint8_t xPos = reg.byteRegisters[Vx] % VideoWidth;
+        uint8_t yPos = reg.byteRegisters[Vy] % VideoHeight;
 
-        reg.registers[0xF] = 0;
+        reg.byteRegisters[0xF] = 0;
 
         for (unsigned row = 0; row < height; ++row) {
             uint8_t spriteByte = mem.m_memory[reg.indexRegister + row];
@@ -229,7 +229,7 @@ namespace chip8
                 uint32_t* screenPixel = &video.videoBuffer[(yPos + row) * VideoWidth + (xPos + col)];
 
                 if (spritePixel and *screenPixel == 0xFFFFFFFF) {
-                    reg.registers[0xF] = 1;
+                    reg.byteRegisters[0xF] = 1;
                 }
                 else if (spritePixel) {
                     *screenPixel ^= 0xFFFFFFFF;
@@ -241,7 +241,7 @@ namespace chip8
     void opEx9E(Registers& reg)
     {
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
-        uint8_t key = reg.registers[Vx];
+        uint8_t key = reg.byteRegisters[Vx];
 
         if (KeyPad[key]) {
             reg.pc += 2;
@@ -252,7 +252,7 @@ namespace chip8
     {
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
 
-        if (uint8_t key = reg.registers[Vx]; not KeyPad[key]) {
+        if (uint8_t key = reg.byteRegisters[Vx]; not KeyPad[key]) {
             reg.pc += 2;
         }
     }
@@ -260,7 +260,7 @@ namespace chip8
     void opFx07(Registers& reg, CPU const& cpu)
     {
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
-        reg.registers[Vx] = cpu.delayTimer;
+        reg.byteRegisters[Vx] = cpu.delayTimer;
     }
 
     void opFx0A(Registers& reg)
@@ -270,52 +270,52 @@ namespace chip8
         // This is the easiest way to wait
 
         if (uint8_t Vx = (opcode & 0x0F00u) >> 8u; KeyPad[0]) {
-            reg.registers[Vx] = 0;
+            reg.byteRegisters[Vx] = 0;
         }
         else if (KeyPad[1]) {
-            reg.registers[Vx] = 1;
+            reg.byteRegisters[Vx] = 1;
         }
         else if (KeyPad[2]) {
-            reg.registers[Vx] = 2;
+            reg.byteRegisters[Vx] = 2;
         }
         else if (KeyPad[3]) {
-            reg.registers[Vx] = 3;
+            reg.byteRegisters[Vx] = 3;
         }
         else if (KeyPad[4]) {
-            reg.registers[Vx] = 4;
+            reg.byteRegisters[Vx] = 4;
         }
         else if (KeyPad[5]) {
-            reg.registers[Vx] = 5;
+            reg.byteRegisters[Vx] = 5;
         }
         else if (KeyPad[6]) {
-            reg.registers[Vx] = 6;
+            reg.byteRegisters[Vx] = 6;
         }
         else if (KeyPad[7]) {
-            reg.registers[Vx] = 7;
+            reg.byteRegisters[Vx] = 7;
         }
         else if (KeyPad[8]) {
-            reg.registers[Vx] = 8;
+            reg.byteRegisters[Vx] = 8;
         }
         else if (KeyPad[9]) {
-            reg.registers[Vx] = 9;
+            reg.byteRegisters[Vx] = 9;
         }
         else if (KeyPad[10]) {
-            reg.registers[Vx] = 10;
+            reg.byteRegisters[Vx] = 10;
         }
         else if (KeyPad[11]) {
-            reg.registers[Vx] = 11;
+            reg.byteRegisters[Vx] = 11;
         }
         else if (KeyPad[12]) {
-            reg.registers[Vx] = 12;
+            reg.byteRegisters[Vx] = 12;
         }
         else if (KeyPad[13]) {
-            reg.registers[Vx] = 13;
+            reg.byteRegisters[Vx] = 13;
         }
         else if (KeyPad[14]) {
-            reg.registers[Vx] = 14;
+            reg.byteRegisters[Vx] = 14;
         }
         else if (KeyPad[15]) {
-            reg.registers[Vx] = 15;
+            reg.byteRegisters[Vx] = 15;
         }
         else {
             reg.pc -= 2;
@@ -325,19 +325,19 @@ namespace chip8
     void opFx15(Registers const& reg, CPU& cpu) noexcept
     {
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
-        cpu.delayTimer = reg.registers[Vx];
+        cpu.delayTimer = reg.byteRegisters[Vx];
     }
 
     void opFx18(Registers& reg, CPU& cpu)
     {
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
-        cpu.soundTimer = reg.registers[Vx];
+        cpu.soundTimer = reg.byteRegisters[Vx];
     }
 
     void opFx1E(Registers& reg)
     {
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
-        reg.indexRegister += reg.registers[Vx];
+        reg.indexRegister += reg.byteRegisters[Vx];
     }
 
     void opFx29(Registers& reg)
@@ -346,7 +346,7 @@ namespace chip8
         // We can therefore get the address of the first byte of each character by taking an offset from the start address
 
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
-        uint8_t digit = reg.registers[Vx];
+        uint8_t digit = reg.byteRegisters[Vx];
 
         reg.indexRegister = FontSetStartAddress + (5 * digit);
     }
@@ -354,7 +354,7 @@ namespace chip8
     void opFx33(Memory& memory, Registers& reg)
     {
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
-        uint8_t value = reg.registers[Vx];
+        uint8_t value = reg.byteRegisters[Vx];
 
         // 1s place
         memory.m_memory[reg.indexRegister + 2] = value % 10;
@@ -373,7 +373,7 @@ namespace chip8
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
 
         for (uint8_t i = 0; i <= Vx; ++i) {
-            memory.m_memory[reg.indexRegister + i] = reg.registers[i];
+            memory.m_memory[reg.indexRegister + i] = reg.byteRegisters[i];
         }
     }
 
@@ -382,7 +382,7 @@ namespace chip8
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
 
         for (uint8_t i = 0; i <= Vx; ++i) {
-            reg.registers[i] = memory.m_memory[reg.indexRegister + i];
+            reg.byteRegisters[i] = memory.m_memory[reg.indexRegister + i];
         }
     }
 }
