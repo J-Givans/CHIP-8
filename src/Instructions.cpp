@@ -163,4 +163,15 @@ namespace chip8
 
         reg.registers[Vx] = reg.registers[Vy] - reg.registers[Vx];
     }
+
+    void op8xyE(Registers& reg) noexcept
+    {
+        // Perform a left shift and store the most significant bit in VF
+        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+
+        // Save MSB in VF
+        reg.registers[0xF] = (reg.registers[Vx] & 0x80u) >> 7u;
+        
+        reg.registers[Vx] <<= 1;
+    }
 }
