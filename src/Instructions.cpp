@@ -255,4 +255,10 @@ namespace chip8
             reg.pc += 2;
         }
     }
+
+    void opFx07(Registers& reg, CPU const& cpu)
+    {
+        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+        reg.registers[Vx] = cpu.delayTimer;
+    }
 }

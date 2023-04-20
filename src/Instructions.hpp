@@ -5,6 +5,7 @@
 #include "Stack.hpp"
 #include "Video.hpp"
 #include "Memory.hpp"
+#include "CPU.hpp"
 
 namespace chip8
 {
@@ -113,6 +114,10 @@ namespace chip8
     /// \brief SKNP Vx
     /// \brief Skip the next instruction if the key with the value of Vx is not pressed
     void opExA1(Registers& reg);
+
+    /// \brief LD Vx, DT
+    /// \brief Set Vx = delay timer value
+    void opFx07(Registers& reg, CPU const& cpu);
 }
 
 #endif
