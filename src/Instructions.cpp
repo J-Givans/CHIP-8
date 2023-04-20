@@ -1,4 +1,5 @@
 #include "Instructions.hpp"
+#include <cstdint>
 
 namespace chip8
 {
@@ -26,5 +27,15 @@ namespace chip8
 
         stack.push(reg.pc);
         reg.pc = address;
+    }
+
+    void op3xkk(Registers& reg)
+    {
+        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+        uint8_t byte = opcode & 0x00FFu;
+
+        if (reg.registers[Vx] == byte) {
+            reg.pc += 2;
+        }
     }
 }

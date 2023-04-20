@@ -23,6 +23,9 @@ namespace chip8
 
     /// \brief Call subroutine at nnn
     void op2nnn(Stack& stack, Registers& reg);
+
+    /// \brief Skip next instruction if Vx = kk
+    void op3xkk(Registers& reg);
 }
 
 #endif
