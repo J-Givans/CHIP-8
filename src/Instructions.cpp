@@ -192,7 +192,7 @@ namespace chip8
     void opAnnn(Registers& reg) noexcept
     {
         uint16_t address = opcode & 0x0FFFu;
-        reg.indexRegister = address;
+        reg.idxRegister = address;
     }
 
     void opBnnn(Registers& reg) noexcept
@@ -222,7 +222,7 @@ namespace chip8
         reg.byteRegisters[0xF] = 0;
 
         for (unsigned row = 0; row < height; ++row) {
-            uint8_t spriteByte = mem.m_memory[reg.indexRegister + row];
+            uint8_t spriteByte = mem.m_memory[reg.idxRegister + row];
 
             for (unsigned col = 0; col < 8; ++col) {
                 uint8_t spritePixel = spriteByte & (0x80u >> col);
@@ -337,7 +337,7 @@ namespace chip8
     void opFx1E(Registers& reg)
     {
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
-        reg.indexRegister += reg.byteRegisters[Vx];
+        reg.idxRegister += reg.byteRegisters[Vx];
     }
 
     void opFx29(Registers& reg)
@@ -348,7 +348,7 @@ namespace chip8
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
         uint8_t digit = reg.byteRegisters[Vx];
 
-        reg.indexRegister = FontSetStartAddress + (5 * digit);
+        reg.idxRegister = FontSetStartAddress + (5 * digit);
     }
 
     void opFx33(Memory& memory, Registers& reg)
@@ -357,15 +357,15 @@ namespace chip8
         uint8_t value = reg.byteRegisters[Vx];
 
         // 1s place
-        memory.m_memory[reg.indexRegister + 2] = value % 10;
+        memory.m_memory[reg.idxRegister + 2] = value % 10;
         value /= 10;
 
         // 10s place
-        memory.m_memory[reg.indexRegister + 1] = value % 10;
+        memory.m_memory[reg.idxRegister + 1] = value % 10;
         value /= 10;
 
         // 100s place
-        memory.m_memory[reg.indexRegister] = value % 10;
+        memory.m_memory[reg.idxRegister] = value % 10;
     }
 
     void opFx55(Memory& memory, Registers& reg)
@@ -373,7 +373,7 @@ namespace chip8
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
 
         for (uint8_t i = 0; i <= Vx; ++i) {
-            memory.m_memory[reg.indexRegister + i] = reg.byteRegisters[i];
+            memory.m_memory[reg.idxRegister + i] = reg.byteRegisters[i];
         }
     }
 
@@ -382,7 +382,7 @@ namespace chip8
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
 
         for (uint8_t i = 0; i <= Vx; ++i) {
-            reg.byteRegisters[i] = memory.m_memory[reg.indexRegister + i];
+            reg.byteRegisters[i] = memory.m_memory[reg.idxRegister + i];
         }
     }
 }
