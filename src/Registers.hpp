@@ -16,6 +16,7 @@ namespace chip8
     public:
         std::array<std::uint8_t, 16> registers = {0};
         std::uint16_t pc;
+        std::uint16_t indexRegister {};
     };
 }
 
