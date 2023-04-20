@@ -6,4 +6,10 @@ namespace chip8
     {
         video.clear();
     }
+
+    void op00EE(Stack& stack, Registers& reg) noexcept
+    {
+        stack.pop();
+        reg.pc = stack.top();
+    }
 }
