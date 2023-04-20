@@ -105,6 +105,10 @@ namespace chip8
     /// \brief DRW Vx, Vy, nibble
     /// \brief Display n-byte sprite starting at memory location I at (Vx, Vy) and set VF = collision
     void opDxyn(Registers& reg, Memory& memory, Video& video);
+
+    /// \brief SKP Vx
+    /// \brief Skip the next instruction if the key with the value of Vx is pressed
+    void opEx9E(Registers& reg);
 }
 
 #endif

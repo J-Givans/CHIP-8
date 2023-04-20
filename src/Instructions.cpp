@@ -1,5 +1,7 @@
 #include "Instructions.hpp"
 #include "Video.hpp"
+#include "Keypad.hpp"
+
 #include <cstdint>
 
 namespace chip8
@@ -232,6 +234,16 @@ namespace chip8
                     *screenPixel ^= 0xFFFFFFFF;
                 }
             }
+        }
+    }
+
+    void opEx9E(Registers& reg)
+    {
+        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+        uint8_t key = reg.registers[Vx];
+
+        if (KeyPad[key]) {
+            reg.pc += 2;
         }
     }
 }
