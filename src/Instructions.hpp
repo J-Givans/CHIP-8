@@ -34,6 +34,10 @@ namespace chip8
     /// \brief SE Vx, Vy
     /// \brief Skip next instruction if Vx = Vy
     void op5xy0(Registers& reg);
+
+    /// \brief LD Vx, byte
+    /// \brief Set Vx = kk
+    void op6xkk(Registers& reg);
 }
 
 #endif
