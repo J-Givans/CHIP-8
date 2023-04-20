@@ -7,6 +7,7 @@ class CPU
 {
 public:
     uint8_t delayTimer {};
+    uint8_t soundTimer {};
 };
 
 #endif
