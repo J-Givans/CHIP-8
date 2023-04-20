@@ -4,6 +4,7 @@
 #include "Registers.hpp"
 #include "Stack.hpp"
 #include "Video.hpp"
+#include "Memory.hpp"
 
 namespace chip8
 {
@@ -100,6 +101,10 @@ namespace chip8
     /// \brief RND Vx, byte
     /// \brief Set Vx = random byte AND kk
     void opCxkk(Registers& reg) noexcept;
+
+    /// \brief DRW Vx, Vy, nibble
+    /// \brief Display n-byte sprite starting at memory location I at (Vx, Vy) and set VF = collision
+    void opDxyn(Registers& reg, Memory& memory, Video& video);
 }
 
 #endif
