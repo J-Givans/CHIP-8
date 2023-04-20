@@ -350,4 +350,21 @@ namespace chip8
 
         reg.indexRegister = FontSetStartAddress + (5 * digit);
     }
+
+    void opFx33(Memory& memory, Registers& reg)
+    {
+        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+        uint8_t value = reg.registers[Vx];
+
+        // 1s place
+        memory.m_memory[reg.indexRegister + 2] = value % 10;
+        value /= 10;
+
+        // 10s place
+        memory.m_memory[reg.indexRegister + 1] = value % 10;
+        value /= 10;
+
+        // 100s place
+        memory.m_memory[reg.indexRegister] = value % 10;
+    }
 }
