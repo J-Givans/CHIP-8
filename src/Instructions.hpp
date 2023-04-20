@@ -148,6 +148,10 @@ namespace chip8
     /// \brief LD [I], Vx
     /// \brief Store registers V0 through Vx in memory starting at location I
     void opFx55(Memory& memory, Registers& reg);
+
+    /// \brief LD Vx, [I]
+    /// \brief Read registers V0 through Vx from memory starting at location I
+    void opFx65(Memory const& memory, Registers& reg);
 }
 
 #endif

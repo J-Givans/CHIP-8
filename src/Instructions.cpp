@@ -376,4 +376,13 @@ namespace chip8
             memory.m_memory[reg.indexRegister + i] = reg.registers[i];
         }
     }
+
+    void opFx65(Memory const& memory, Registers& reg)
+    {
+        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+
+        for (uint8_t i = 0; i <= Vx; ++i) {
+            reg.registers[i] = memory.m_memory[reg.indexRegister + i];
+        }
+    }
 }
