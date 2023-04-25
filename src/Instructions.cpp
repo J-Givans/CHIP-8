@@ -112,11 +112,6 @@ namespace chip8
         reg.opExA1();
     }
 
-    void opFx07(Registers& reg, Timers const& timers) noexcept
-    {
-        reg.opFx07(timers);
-    }
-
     void opFx0A(Registers& reg) noexcept
     {
         reg.opFx0A();

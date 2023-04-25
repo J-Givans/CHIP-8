@@ -100,10 +100,6 @@ namespace chip8
     /// \brief Skip the next instruction if the key with the value of Vx is not pressed
     void opExA1(Registers& reg) noexcept;
 
-    /// \brief LD Vx, DT
-    /// \brief Set Vx = delay timer value
-    void opFx07(Registers& reg, Timers const& timers) noexcept;
-
     /// \brief LD Vx, K
     /// \brief Wait for a key press, and then store the value of the key pressed in Vx
     void opFx0A(Registers& reg) noexcept;

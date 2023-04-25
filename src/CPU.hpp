@@ -30,6 +30,10 @@ namespace chip8
         /// \brief Display n-byte sprite starting at memory location I at (Vx, Vy) and set VF = collision
         void opDxyn() noexcept;
 
+        /// \brief LD Vx, DT
+        /// \brief Set Vx = delay timer value
+        void opFx07() noexcept;
+
         /// \brief LD B, Vx
         /// \brief Store BCD representation of Vx in memory locations I, I + 1, and I + 2
         /// \details The interpreter takes the decimal value of Vx and places the hundreds digit in memory at location I, 

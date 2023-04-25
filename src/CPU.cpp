@@ -55,6 +55,11 @@ namespace chip8
         }
     }
 
+    void CPU::opFx07() noexcept
+    {
+        registers_.opFx07(timers_);
+    }
+
     void CPU::opFx33() noexcept
     {
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
