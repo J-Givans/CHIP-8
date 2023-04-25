@@ -117,7 +117,7 @@ namespace chip8
 
     /// \brief LD Vx, DT
     /// \brief Set Vx = delay timer value
-    void opFx07(Registers& reg, CPU const& cpu);
+    void opFx07(Registers& reg, Timers const& timers) noexcept;
 
     /// \brief LD Vx, K
     /// \brief Wait for a key press, and then store the value of the key pressed in Vx

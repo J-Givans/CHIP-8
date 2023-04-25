@@ -206,6 +206,12 @@ namespace chip8
         }
     }
 
+    void Registers::opFx07(Timers const& timers) noexcept
+    {
+        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+        byteRegisters[Vx] = timers.delayTimer;
+    }
+
     void Registers::opFx0A() noexcept
     {
         // Decrementing the pc by 2 whenever a key pad value is not detected

@@ -160,10 +160,9 @@ namespace chip8
         reg.opExA1();
     }
 
-    void opFx07(Registers& reg, CPU const& cpu)
+    void opFx07(Registers& reg, Timers const& timers) noexcept
     {
-        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
-        reg.byteRegisters[Vx] = cpu.delayTimer;
+        reg.opFx07(timers);
     }
 
     void opFx0A(Registers& reg) noexcept
