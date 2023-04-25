@@ -158,6 +158,21 @@ namespace chip8
         /// \brief Read registers V0 through Vx from memory starting at location I
         void opFx65() noexcept;
 
+        /// \brief Execute an instruction in table0
+        void Table0();
+        
+        /// \brief Execute an instruction in table8
+        void Table8();
+        
+        /// \brief Execute an instruction in tableE
+        void TableE();
+        
+        /// \brief Execute an instruction in tableF
+        void TableF();
+        
+        /// \brief Do nothing instruction
+        void opNull();
+
     private:
         Memory memory_;
         Registers registers_;

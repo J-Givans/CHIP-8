@@ -25,6 +25,33 @@ namespace chip8
         tableF[0x55] = &CPU::opFx55;
         tableF[0x65] = &CPU::opFx65;
     }
+
+    void CPU::Table0()
+    {
+        // std::invoke(table0[opcode & 0x000Fu], this)?
+        ((*this).*(table0[opcode & 0x000Fu]))();
+    }
+
+    void CPU::Table8()
+    {
+        ((*this).*(table8[opcode & 0x000Fu]))();
+    }
+
+    void CPU::TableE()
+    {
+        ((*this).*(tableE[opcode & 0x000Fu]))();
+    }
+
+    void CPU::TableF()
+    {
+        ((*this).*(tableF[opcode & 0x00FFu]))();
+    }
+
+    void CPU::opNull()
+    {
+        return;
+    }
+
     void CPU::op00E0() noexcept
     {
         video_.clear();
