@@ -19,10 +19,6 @@ namespace chip8
     class Registers
     {
     public:
-        std::array<std::uint8_t, 16> byteRegisters = {0};
-        std::uint16_t pc = StartAddress;
-        std::uint16_t idxRegister {};
-
         /// \brief Default constructor
         constexpr Registers() noexcept = default;
 
@@ -152,6 +148,11 @@ namespace chip8
         /// \brief LD F, Vx
         /// \brief Set I = location of sprite for digit Vx
         void opFx29() noexcept;
+
+    private:
+        std::array<std::uint8_t, 16> byteRegisters = {0};
+        std::uint16_t pc = StartAddress;
+        std::uint16_t idxRegister {};
     };
 
     constexpr std::uint16_t Registers::getIndexRegister() const noexcept

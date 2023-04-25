@@ -15,7 +15,7 @@ namespace chip8
     void op00EE(Stack& stack, Registers& reg) noexcept
     {
         stack.pop();
-        reg.pc = stack.top();
+        reg.setProgramCounter(stack.top());
     }
 
     void op1nnn(Registers& reg) noexcept
@@ -27,8 +27,8 @@ namespace chip8
     {
         std::uint16_t address = opcode & 0x0FFFu;
 
-        stack.push(reg.pc);
-        reg.pc = address;
+        stack.push(reg.getProgramCounter());
+        reg.setProgramCounter(address);
     }
 
     void op3xkk(Registers& reg) noexcept
@@ -128,20 +128,20 @@ namespace chip8
         uint8_t height = opcode & 0x000Fu;
 
         // Wrap if going beyond the screen boundaries
-        uint8_t xPos = reg.byteRegisters[Vx] % VideoWidth;
-        uint8_t yPos = reg.byteRegisters[Vy] % VideoHeight;
+        uint8_t xPos = reg[Vx] % VideoWidth;
+        uint8_t yPos = reg[Vy] % VideoHeight;
 
-        reg.byteRegisters[0xF] = 0;
+        reg[0xF] = 0;
 
         for (unsigned row = 0; row < height; ++row) {
-            uint8_t spriteByte = mem.m_memory[reg.idxRegister + row];
+            uint8_t spriteByte = mem.m_memory[reg.getIndexRegister() + row];
 
             for (unsigned col = 0; col < 8; ++col) {
                 uint8_t spritePixel = spriteByte & (0x80u >> col);
                 uint32_t* screenPixel = &video.videoBuffer[(yPos + row) * VideoWidth + (xPos + col)];
 
                 if (spritePixel and *screenPixel == 0xFFFFFFFF) {
-                    reg.byteRegisters[0xF] = 1;
+                    reg[0xF] = 1;
                 }
                 else if (spritePixel) {
                     *screenPixel ^= 0xFFFFFFFF;
@@ -173,13 +173,13 @@ namespace chip8
     void opFx15(Registers const& reg, CPU& cpu) noexcept
     {
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
-        cpu.delayTimer = reg.byteRegisters[Vx];
+        cpu.delayTimer = reg[Vx];
     }
 
     void opFx18(Registers& reg, CPU& cpu)
     {
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
-        cpu.soundTimer = reg.byteRegisters[Vx];
+        cpu.soundTimer = reg[Vx];
     }
 
     void opFx1E(Registers& reg) noexcept
@@ -195,18 +195,18 @@ namespace chip8
     void opFx33(Memory& memory, Registers& reg)
     {
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
-        uint8_t value = reg.byteRegisters[Vx];
+        uint8_t value = reg[Vx];
 
         // 1s place
-        memory.m_memory[reg.idxRegister + 2] = value % 10;
+        memory.m_memory[reg.getIndexRegister() + 2] = value % 10;
         value /= 10;
 
         // 10s place
-        memory.m_memory[reg.idxRegister + 1] = value % 10;
+        memory.m_memory[reg.getIndexRegister() + 1] = value % 10;
         value /= 10;
 
         // 100s place
-        memory.m_memory[reg.idxRegister] = value % 10;
+        memory.m_memory[reg.getIndexRegister()] = value % 10;
     }
 
     void opFx55(Memory& memory, Registers& reg)
@@ -214,7 +214,7 @@ namespace chip8
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
 
         for (uint8_t i = 0; i <= Vx; ++i) {
-            memory.m_memory[reg.idxRegister + i] = reg.byteRegisters[i];
+            memory.m_memory[reg.getIndexRegister() + i] = reg[i];
         }
     }
 
@@ -223,7 +223,7 @@ namespace chip8
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
 
         for (uint8_t i = 0; i <= Vx; ++i) {
-            reg.byteRegisters[i] = memory.m_memory[reg.idxRegister + i];
+            reg[i] = memory.m_memory[reg.getIndexRegister() + i];
         }
     }
 }
