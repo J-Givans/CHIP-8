@@ -25,7 +25,7 @@ namespace chip8
         constexpr uint32_t& operator[](size_t idx) noexcept;
 
         /// \brief Set the entire video buffer to zeros
-        constexpr void clear() noexcept;
+        void clear() noexcept;
 
     private:
         std::array<std::uint32_t, VideoWidth * VideoHeight> videoBuffer = {0};
@@ -35,11 +35,6 @@ namespace chip8
     {
         Expects(idx < videoBuffer.size() and "Index out of bounds");
         return videoBuffer[idx];
-    }
-
-    constexpr void Video::clear() noexcept
-    {
-        videoBuffer.fill(0);
     }
 }
 
