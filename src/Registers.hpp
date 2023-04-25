@@ -24,6 +24,14 @@ namespace chip8
         /// \brief Default constructor
         constexpr Registers() noexcept = default;
 
+        /// \brief Get the current value of the index register
+        /// \returns The value of the index register
+        constexpr std::uint16_t getIndexRegister() const noexcept;
+
+        /// \brief Get the current value of the program counter
+        /// \returns The value of the program counter
+        constexpr std::uint16_t getProgramCounter() const noexcept;
+
         /// \brief Jump to location nnn
         /// \details The interpreter sets the program counter to nnn
         void op1nnn() noexcept;
@@ -129,6 +137,16 @@ namespace chip8
         /// \brief Set I = location of sprite for digit Vx
         void opFx29() noexcept;
     };
+
+    constexpr std::uint16_t Registers::getIndexRegister() const noexcept
+    {
+        return idxRegister;
+    }
+
+    constexpr std::uint16_t Registers::getProgramCounter() const noexcept
+    {
+        return pc;
+    }
 }
 
 #endif
