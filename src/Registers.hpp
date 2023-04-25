@@ -34,6 +34,10 @@ namespace chip8
         /// \returns The value of the program counter
         constexpr std::uint16_t getProgramCounter() const noexcept;
 
+        /// \brief Set the program counter to the given value
+        /// \param[in] value The new value of the program counter
+        constexpr void setProgramCounter(std::uint16_t value) noexcept;
+
         /// \brief Get the value of the 8-bit register at the given index (read and write access)
         /// \param[in] index The index of the 8-bit register
         /// \returns The value of the 8-bit register
@@ -158,6 +162,11 @@ namespace chip8
     constexpr std::uint16_t Registers::getProgramCounter() const noexcept
     {
         return pc;
+    }
+
+    constexpr void Registers::setProgramCounter(std::uint16_t value) noexcept
+    {
+        pc = value;
     }
 
     constexpr uint8_t& Registers::operator[](uint8_t index) noexcept
