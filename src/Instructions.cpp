@@ -12,12 +12,6 @@ namespace chip8
         video.clear();
     }
 
-    void op00EE(Stack& stack, Registers& reg) noexcept
-    {
-        stack.pop();
-        reg.setProgramCounter(stack.top());
-    }
-
     void op1nnn(Registers& reg) noexcept
     {
         reg.op1nnn();

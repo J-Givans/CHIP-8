@@ -7,6 +7,12 @@
 
 namespace chip8
 {
+    void CPU::op00EE() noexcept
+    {
+        stack_.pop();
+        registers_.setProgramCounter(stack_.top());
+    }
+
     void CPU::opFx33() noexcept
     {
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
