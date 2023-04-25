@@ -183,10 +183,9 @@ namespace chip8
         cpu.soundTimer = reg.byteRegisters[Vx];
     }
 
-    void opFx1E(Registers& reg)
+    void opFx1E(Registers& reg) noexcept
     {
-        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
-        reg.idxRegister += reg.byteRegisters[Vx];
+        reg.opFx1E();
     }
 
     void opFx29(Registers& reg)

@@ -115,6 +115,10 @@ namespace chip8
         /// \brief LD Vx, K
         /// \brief Wait for a key press, and then store the value of the key pressed in Vx
         void opFx0A() noexcept;
+
+        /// \brief ADD I, Vx
+        /// \brief Set I = I + Vx
+        void opFx1E() noexcept;
     };
 }
 
