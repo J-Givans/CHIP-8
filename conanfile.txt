@@ -1,5 +1,6 @@
 [requires]
 ms-gsl/4.0.0
+sfml/2.5.1
 gtest/cci.20210126
 
 [generators]
