@@ -21,6 +21,35 @@ namespace chip8
         registers_.setProgramCounter(address);
     }
 
+    void CPU::opDxyn() noexcept
+    {
+        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+        uint8_t Vy = (opcode & 0x00F0u) >> 4u;
+        uint8_t height = opcode & 0x000Fu;
+
+        // Wrap if going beyond the screen boundaries
+        uint8_t xPos = registers_[Vx] % VideoWidth;
+        uint8_t yPos = registers_[Vy] % VideoHeight;
+
+        registers_[0xF] = 0;
+
+        for (unsigned row = 0; row < height; ++row) {
+            uint8_t spriteByte = memory_[gsl::narrow_cast<uint8_t>(registers_.getIndexRegister() + row)];
+
+            for (unsigned col = 0; col < 8; ++col) {
+                uint8_t spritePixel = spriteByte & (0x80u >> col);
+                uint32_t& screenPixel = video_.videoBuffer[(yPos + row) * VideoWidth + (xPos + col)];
+
+                if (spritePixel and screenPixel == 0xFFFFFFFF) {
+                    registers_[0xF] = 1;
+                }
+                else if (spritePixel) {
+                    screenPixel ^= 0xFFFFFFFF;
+                }
+            }
+        }
+    }
+
     void CPU::opFx33() noexcept
     {
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;

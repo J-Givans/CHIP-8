@@ -107,11 +107,6 @@ namespace chip8
         reg.opCxkk();
     }
 
-    void opDxyn(Video& video, Memory& memory, Registers& reg) noexcept
-    {
-        video.opDxyn(memory, reg);
-    }
-
     void opEx9E(Registers& reg) noexcept
     {
         reg.opEx9E();

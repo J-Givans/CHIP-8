@@ -95,10 +95,6 @@ namespace chip8
     /// \brief Set Vx = random byte AND kk
     void opCxkk(Registers& reg) noexcept;
 
-    /// \brief DRW Vx, Vy, nibble
-    /// \brief Display n-byte sprite starting at memory location I at (Vx, Vy) and set VF = collision
-    void opDxyn(Video& video, Memory& memory, Registers& reg) noexcept;
-
     /// \brief SKP Vx
     /// \brief Skip the next instruction if the key with the value of Vx is pressed
     void opEx9E(Registers& reg) noexcept;
