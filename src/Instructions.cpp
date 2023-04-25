@@ -7,31 +7,6 @@
 
 namespace chip8
 {
-    void op1nnn(Registers& reg) noexcept
-    {
-        reg.op1nnn();
-    }
-
-    void op3xkk(Registers& reg) noexcept
-    {
-        reg.op3xkk();
-    }
-
-    void op4xkk(Registers& reg) noexcept
-    {
-        reg.op4xkk();
-    }
-
-    void op5xy0(Registers& reg) noexcept
-    {
-        reg.op5xy0();
-    }
-
-    void op6xkk(Registers& reg) noexcept
-    {
-        reg.op6xkk();
-    }
-
     void op7xkk(Registers& reg) noexcept
     {
         reg.op7xkk();
@@ -116,7 +91,7 @@ namespace chip8
     {
         reg.opFx0A();
     }
-    
+
     void opFx1E(Registers& reg) noexcept
     {
         reg.opFx1E();

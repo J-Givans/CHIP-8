@@ -23,8 +23,27 @@ namespace chip8
         /// \param[in] reg A reference to the register containing the program counter
         void op00EE() noexcept;
 
+        /// \brief Jump to location nnn
+        /// \details The interpreter sets the program counter to nnn
+        void op1nnn() noexcept;
+
         /// \brief Call subroutine at nnn
         void op2nnn() noexcept;
+
+        /// \brief Skip next instruction if Vx = kk
+        void op3xkk() noexcept;
+
+        /// \brief SNE Vx, byte
+        /// \brief Skip next instruction if Vx != kk
+        void op4xkk() noexcept;
+
+        /// \brief SE Vx, Vy
+        /// \brief Skip next instruction if Vx = Vy
+        void op5xy0() noexcept;
+
+        /// \brief LD Vx, byte
+        /// \brief Set Vx = kk
+        void op6xkk() noexcept;
 
         /// \brief DRW Vx, Vy, nibble
         /// \brief Display n-byte sprite starting at memory location I at (Vx, Vy) and set VF = collision

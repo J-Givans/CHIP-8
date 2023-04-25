@@ -11,25 +11,6 @@ namespace chip8
 {
     inline std::uint16_t opcode {};
 
-    /// \brief Jump to location nnn
-    /// \details The interpreter sets the program counter to nnn
-    void op1nnn(Registers& reg) noexcept;
-
-    /// \brief Skip next instruction if Vx = kk
-    void op3xkk(Registers& reg) noexcept;
-
-    /// \brief SNE Vx, byte
-    /// \brief Skip next instruction if Vx != kk
-    void op4xkk(Registers& reg) noexcept;
-
-    /// \brief SE Vx, Vy
-    /// \brief Skip next instruction if Vx = Vy
-    void op5xy0(Registers& reg) noexcept;
-
-    /// \brief LD Vx, byte
-    /// \brief Set Vx = kk
-    void op6xkk(Registers& reg) noexcept;
-
     /// \brief ADD Vx, byte
     /// \brief Set Vx = Vk + kk
     void op7xkk(Registers& reg) noexcept;
