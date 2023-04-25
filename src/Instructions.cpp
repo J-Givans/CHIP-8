@@ -7,11 +7,6 @@
 
 namespace chip8
 {
-    void opFx0A(Registers& reg) noexcept
-    {
-        reg.opFx0A();
-    }
-
     void opFx1E(Registers& reg) noexcept
     {
         reg.opFx1E();
