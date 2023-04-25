@@ -12,7 +12,8 @@ namespace chip8
     class CPU
     {
     public:
-        CPU() = default;
+        /// \brief Default constructor
+        CPU();
 
         /// \brief Clear the display
         /// \details Set the entire video buffer to zeroes
@@ -163,6 +164,27 @@ namespace chip8
         Stack stack_;
         Timers timers_;
         Video video_;
+
+        using instruction = void (CPU::*)();
+
+        std::array<instruction, 0xF + 1> table = {
+            &CPU::Table0, &CPU::op1nnn, &CPU::op2nnn, &CPU::op3xkk,
+            &CPU::op4xkk, &CPU::op5xy0, &CPU::op6xkk, &CPU::op7xkk,
+            &CPU::Table8, &CPU::op9xy0, &CPU::opAnnn, &CPU::opBnnn,
+            &CPU::opCxkk, &CPU::opDxyn, &CPU::TableE, &CPU::TableF
+        };
+        
+        std::array<instruction, 0xE + 1> table0 = { &CPU::opNull };
+        
+        std::array<instruction, 0xE + 1> table8 = { 
+            &CPU::op8xy0, &CPU::op8xy1, &CPU::op8xy2, &CPU::op8xy3, 
+            &CPU::op8xy4, &CPU::op8xy5, &CPU::op8xy6, &CPU::op8xy7,
+            &CPU::opNull, &CPU::opNull, &CPU::opNull, &CPU::opNull,
+            &CPU::opNull, &CPU::opNull, &CPU::op8xyE
+        };
+        
+        std::array<instruction, 0xE + 1> tableE = { &CPU::opNull };
+        std::array<instruction, 0x65 + 1> tableF = { &CPU::opNull };
     };
 }
 

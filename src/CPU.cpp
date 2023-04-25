@@ -7,6 +7,24 @@
 
 namespace chip8
 {
+    CPU::CPU()
+    {
+        table0[0x0] = &CPU::op00E0;
+        table0[0xE] = &CPU::op00EE;
+
+        tableE[0x1] = &CPU::opExA1;
+        tableE[0xE] = &CPU::opEx9E;
+
+        tableF[0x07] = &CPU::opFx07;
+        tableF[0x0A] = &CPU::opFx0A;
+        tableF[0x15] = &CPU::opFx15;
+        tableF[0x18] = &CPU::opFx18;
+        tableF[0x1E] = &CPU::opFx1E;
+        tableF[0x29] = &CPU::opFx29;
+        tableF[0x33] = &CPU::opFx33;
+        tableF[0x55] = &CPU::opFx55;
+        tableF[0x65] = &CPU::opFx65;
+    }
     void CPU::op00E0() noexcept
     {
         video_.clear();
