@@ -18,8 +18,7 @@ namespace chip8
         /// \param[in] windowWidth, windowHeight The dimensions of the window
         Platform(std::string const& title, unsigned windowWidth, unsigned windowHeight);
 
-        [[nodiscard]]
-        bool processInput(std::array<uint8_t, 16>& keys);
+        void processInput(std::array<uint8_t, 16>& keys);
 
     private:
         sf::RenderWindow window_;

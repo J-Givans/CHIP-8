@@ -12,11 +12,8 @@ namespace chip8
     {
     }
 
-    [[nodiscard]]
-    bool Platform::processInput(std::array<uint8_t, 16>& keys)
+    void Platform::processInput(std::array<uint8_t, 16>& keys)
     {
-        bool quit = false;
-
         while (window_.isOpen()) {
             sf::Event event;
             using sf::Keyboard;
@@ -27,7 +24,7 @@ namespace chip8
                 }
                 else if (event.type == sf::Event::KeyPressed) {
                     if (Keyboard::isKeyPressed(Keyboard::Escape)) {
-                        quit = true;
+                        window_.close();
                     }
                     else if (Keyboard::isKeyPressed(Keyboard::X)) {
                         keys[0] = 1;
@@ -130,7 +127,5 @@ namespace chip8
                 }
             }
         }
-
-        return quit;
     }
 }
