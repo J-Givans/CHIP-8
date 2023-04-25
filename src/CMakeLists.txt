@@ -35,4 +35,6 @@ target_sources(app
         Timers.cpp
         Video.hpp
         Video.cpp
+        Platform.hpp
+        Platform.cpp
 )
