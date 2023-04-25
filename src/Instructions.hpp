@@ -1,11 +1,7 @@
 #ifndef INSTRUCTIONS_HPP
 #define INSTRUCTIONS_HPP
 
-#include "Registers.hpp"
-#include "Stack.hpp"
-#include "Video.hpp"
-#include "Memory.hpp"
-#include "CPU.hpp"
+#include <cstdint>
 
 namespace chip8
 {
