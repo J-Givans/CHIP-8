@@ -19,6 +19,9 @@ namespace chip8
         std::array<std::uint8_t, 16> byteRegisters = {0};
         std::uint16_t pc = StartAddress;
         std::uint16_t idxRegister {};
+
+        /// \brief Default constructor
+        constexpr Registers() noexcept = default;
     };
 }
 
