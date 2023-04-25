@@ -1,6 +1,9 @@
 #ifndef VIDEO_BUFFER_HPP
 #define VIDEO_BUFFER_HPP
 
+#include "Registers.hpp"
+#include "Memory.hpp"
+
 #include <array>
 #include <cstdint>
 
@@ -16,6 +19,10 @@ namespace chip8
 
         /// \brief Set the entire video buffer to zeros
         constexpr void clear() noexcept;
+
+        /// \brief DRW Vx, Vy, nibble
+        /// \brief Display n-byte sprite starting at memory location I at (Vx, Vy) and set VF = collision
+        void opDxyn(Memory& memory, Registers& reg) noexcept;
     };
 
     constexpr void Video::clear() noexcept
