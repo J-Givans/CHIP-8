@@ -7,6 +7,11 @@
 
 namespace chip8
 {
+    void CPU::op00E0() noexcept
+    {
+        video_.clear();
+    }
+
     void CPU::op00EE() noexcept
     {
         stack_.pop();

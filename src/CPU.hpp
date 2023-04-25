@@ -14,6 +14,10 @@ namespace chip8
     public:
         CPU() = default;
 
+        /// \brief Clear the display
+        /// \details Set the entire video buffer to zeroes
+        void op00E0() noexcept;
+
         /// \brief Return from a subroutine
         /// \param[in] stack A reference to the stack containing instructions to execute
         /// \param[in] reg A reference to the register containing the program counter

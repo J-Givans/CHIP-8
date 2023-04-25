@@ -11,9 +11,6 @@ namespace chip8
 {
     inline std::uint16_t opcode {};
 
-    /// \brief Clear the video buffer
-    constexpr void op00E0(Video& video) noexcept;
-
     /// \brief Jump to location nnn
     /// \details The interpreter sets the program counter to nnn
     void op1nnn(Registers& reg) noexcept;

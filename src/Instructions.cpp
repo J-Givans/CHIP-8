@@ -7,11 +7,6 @@
 
 namespace chip8
 {
-    constexpr void op00E0(Video& video) noexcept
-    {
-        video.clear();
-    }
-
     void op1nnn(Registers& reg) noexcept
     {
         reg.op1nnn();
