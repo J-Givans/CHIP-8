@@ -11,26 +11,6 @@ namespace chip8
 {
     inline std::uint16_t opcode {};
 
-    /// \brief ADD Vx, byte
-    /// \brief Set Vx = Vk + kk
-    void op7xkk(Registers& reg) noexcept;
-
-    /// \brief LD Vx, Vy
-    /// \brief Set Vx = Vy
-    void op8xy0(Registers& reg) noexcept;
-
-    /// \brief OR Vx, Vy
-    /// \brief Set Vx = Vx or Vy
-    void op8xy1(Registers& reg) noexcept;
-
-    /// \brief AND Vx, Vy
-    /// \brief Set Vx = Vx AND Vy
-    void op8xy2(Registers& reg) noexcept;
-
-    /// \brief XOR Vx, Vy
-    /// \brief Set Vx = Vx XOR Vy
-    void op8xy3(Registers& reg) noexcept;
-
     /// \brief ADD Vx, Vy
     /// \brief Set Vx = Vx + Vy and set VF = carry
     /// \details Sum Vx and Vy. If the result is greater than 8 bits, set VF to 1, otherwise 0.

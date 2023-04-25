@@ -45,6 +45,26 @@ namespace chip8
         /// \brief Set Vx = kk
         void op6xkk() noexcept;
 
+        /// \brief ADD Vx, byte
+        /// \brief Set Vx = Vk + kk
+        void op7xkk() noexcept;
+
+        /// \brief LD Vx, Vy
+        /// \brief Set Vx = Vy
+        void op8xy0() noexcept;
+
+        /// \brief OR Vx, Vy
+        /// \brief Set Vx = Vx or Vy
+        void op8xy1() noexcept;
+
+        /// \brief AND Vx, Vy
+        /// \brief Set Vx = Vx AND Vy
+        void op8xy2() noexcept;
+
+        /// \brief XOR Vx, Vy
+        /// \brief Set Vx = Vx XOR Vy
+        void op8xy3() noexcept;
+
         /// \brief DRW Vx, Vy, nibble
         /// \brief Display n-byte sprite starting at memory location I at (Vx, Vy) and set VF = collision
         void opDxyn() noexcept;
