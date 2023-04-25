@@ -45,6 +45,10 @@ namespace chip8
         /// \brief ADD Vx, byte
         /// \brief Set Vx = Vk + kk
         void op7xkk() noexcept;
+
+        /// \brief LD Vx, Vy
+        /// \brief Set Vx = Vy
+        void op8xy0() noexcept;
     };
 }
 
