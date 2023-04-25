@@ -171,4 +171,10 @@ namespace chip8
         uint16_t address = opcode & 0x0FFFu;
         idxRegister = address;
     }
+
+    void Registers::opBnnn() noexcept
+    {
+        uint16_t address = opcode & 0x0FFFu;
+        pc = byteRegisters[0] + address;
+    }
 }
