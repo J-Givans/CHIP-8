@@ -118,4 +118,15 @@ namespace chip8
 
         byteRegisters[Vx] -= byteRegisters[Vy];
     }
+
+    void Registers::op8xy6() noexcept
+    {
+        // Perform a right shift and set VF to the least significant bit
+        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+
+        // Save LSB in VF
+        byteRegisters[0xF] = (byteRegisters[Vx] & 0x1u);
+        
+        byteRegisters[Vx] >>= 1;
+    }
 }

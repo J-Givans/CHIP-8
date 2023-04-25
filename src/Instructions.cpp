@@ -88,13 +88,7 @@ namespace chip8
 
     void op8xy6(Registers& reg) noexcept
     {
-        // Perform a right shift and set VF to the least significant bit
-        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
-
-        // Save LSB in VF
-        reg.byteRegisters[0xF] = (reg.byteRegisters[Vx] & 0x1u);
-        
-        reg.byteRegisters[Vx] >>= 1;
+        reg.op8xy6();
     }
 
     void op8xy7(Registers& reg) noexcept
