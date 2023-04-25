@@ -270,4 +270,15 @@ namespace chip8
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
         idxRegister += byteRegisters[Vx];
     }
+
+    void Registers::opFx29() noexcept
+    {
+        // Font characters are located at address 0x50, and are 5 bytes each
+        // We can therefore get the address of the first byte of each character by taking an offset from the start address
+
+        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+        uint8_t digit = byteRegisters[Vx];
+
+        idxRegister = FontSetStartAddress + (5 * digit);
+    }
 }

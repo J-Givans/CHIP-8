@@ -137,7 +137,7 @@ namespace chip8
 
     /// \brief LD F, Vx
     /// \brief Set I = location of sprite for digit Vx
-    void opFx29(Registers& reg);
+    void opFx29(Registers& reg) noexcept;
 
     /// \brief LD B, Vx
     /// \brief Store BCD representation of Vx in memory locations I, I + 1, and I + 2
