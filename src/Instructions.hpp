@@ -11,32 +11,6 @@ namespace chip8
 {
     inline std::uint16_t opcode {};
 
-    /// \brief ADD Vx, Vy
-    /// \brief Set Vx = Vx + Vy and set VF = carry
-    /// \details Sum Vx and Vy. If the result is greater than 8 bits, set VF to 1, otherwise 0.
-    /// \details Keep only the lowest 8 bits of the result and store them in Vx
-    void op8xy4(Registers& reg) noexcept;
-
-    /// \brief SUB Vx, Vy
-    /// \brief Set Vx = Vx - Vy and set VF = NOT borrow
-    /// \details If Vx > Vy, then VF is set to 1, otherwise 0. Then Vy is subtracted from Vx, and the results stored in Vx
-    void op8xy5(Registers& reg) noexcept;
-
-    /// \brief SHR Vx
-    /// \brief Set Vx Vx SHR 1
-    /// \details If the least significant bit of Vx is 1, then VF is set to 1, otherwise 0. Then Vx is divided by 2
-    void op8xy6(Registers& reg) noexcept;
-
-    /// \brief SUBN Vx, Vy
-    /// \brief Set Vx = Vy - Vx, and set VF = NOT borrow
-    /// \details If Vy > Vx, set VF = 1, otherwise 0. Then subtract Vx from Vy, and store the results in Vx
-    void op8xy7(Registers& reg) noexcept;
-
-    /// \brief SHL Vx { , Vy }
-    /// \brief Set Vx = Vx SHL 1
-    /// \details If the most-significant bit of Vx is 1, then VF is set to 1, otherwise to 0. Then Vx is multiplied by 2
-    void op8xyE(Registers& reg) noexcept;
-
     /// \brief SNE Vx, Vy
     /// \brief Skip next instruction if Vx != Vy
     void op9xy0(Registers& reg) noexcept;

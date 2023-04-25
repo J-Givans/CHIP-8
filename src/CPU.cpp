@@ -76,6 +76,31 @@ namespace chip8
         registers_.op8xy3();
     }
 
+    void CPU::op8xy4() noexcept
+    {
+        registers_.op8xy4();
+    }
+
+    void CPU::op8xy5() noexcept
+    {
+        registers_.op8xy5();
+    }
+
+    void CPU::op8xy6() noexcept
+    {
+        registers_.op8xy6();
+    }
+
+    void CPU::op8xy7() noexcept
+    {
+        registers_.op8xy7();
+    }
+
+    void CPU::op8xyE() noexcept
+    {
+        registers_.op8xyE();
+    }
+
     void CPU::opDxyn() noexcept
     {
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
