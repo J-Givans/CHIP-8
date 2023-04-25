@@ -1,5 +1,6 @@
 #include "Registers.hpp"
 #include "Instructions.hpp"
+#include "Keypad.hpp"
 
 namespace chip8
 {
@@ -184,5 +185,15 @@ namespace chip8
         uint8_t byte = opcode & 0x00FFu;
 
         byteRegisters[Vx] = distribution(generator) & byte;
+    }
+
+    void Registers::opEx9E() noexcept
+    {
+        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+        uint8_t key = byteRegisters[Vx];
+
+        if (KeyPad[key]) {
+            pc += 2;
+        }
     }
 }

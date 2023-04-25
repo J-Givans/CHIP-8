@@ -103,6 +103,10 @@ namespace chip8
         /// \brief RND Vx, byte
         /// \brief Set Vx = random byte AND kk
         void opCxkk() noexcept;
+
+        /// \brief SKP Vx
+        /// \brief Skip the next instruction if the key with the value of Vx is pressed
+        void opEx9E() noexcept;
     };
 }
 

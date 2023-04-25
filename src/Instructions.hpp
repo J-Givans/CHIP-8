@@ -109,7 +109,7 @@ namespace chip8
 
     /// \brief SKP Vx
     /// \brief Skip the next instruction if the key with the value of Vx is pressed
-    void opEx9E(Registers& reg);
+    void opEx9E(Registers& reg) noexcept;
 
     /// \brief SKNP Vx
     /// \brief Skip the next instruction if the key with the value of Vx is not pressed
