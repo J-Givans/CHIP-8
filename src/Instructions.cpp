@@ -167,21 +167,4 @@ namespace chip8
     {
         reg.opFx29();
     }
-
-    void opFx33(Memory& memory, Registers& reg)
-    {
-        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
-        uint8_t value = reg[Vx];
-
-        // 1s place
-        memory.m_memory[reg.getIndexRegister() + 2] = value % 10;
-        value /= 10;
-
-        // 10s place
-        memory.m_memory[reg.getIndexRegister() + 1] = value % 10;
-        value /= 10;
-
-        // 100s place
-        memory.m_memory[reg.getIndexRegister()] = value % 10;
-    }
 }
