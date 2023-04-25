@@ -61,6 +61,12 @@ namespace chip8
         /// \brief XOR Vx, Vy
         /// \brief Set Vx = Vx XOR Vy
         void op8xy3() noexcept;
+
+        /// \brief ADD Vx, Vy
+        /// \brief Set Vx = Vx + Vy and set VF = carry
+        /// \details Sum Vx and Vy. If the result is greater than 8 bits, set VF to 1, otherwise 0.
+        /// \details Keep only the lowest 8 bits of the result and store them in Vx
+        void op8xy4() noexcept;
     };
 }
 
