@@ -1,13 +1,26 @@
 #ifndef CPU_HPP
 #define CPU_HPP
 
-#include <cstdint>
+#include "Memory.hpp"
+#include "Registers.hpp"
+#include "Stack.hpp"
+#include "Timers.hpp"
+#include "Video.hpp"
 
-class CPU
+namespace chip8
 {
-public:
-    uint8_t delayTimer {};
-    uint8_t soundTimer {};
-};
+    class CPU
+    {
+    public:
+        CPU() = default;
+
+    private:
+        Memory memory_;
+        Registers registers_;
+        Stack stack_;
+        Timers timers_;
+        Video video_;
+    };
+}
 
 #endif
