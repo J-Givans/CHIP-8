@@ -18,6 +18,7 @@ namespace chip8
 
     class Registers
     {
+        friend class CPU;
     public:
         /// \brief Default constructor
         constexpr Registers() noexcept = default;

@@ -47,7 +47,7 @@ namespace chip8
         ((*this).*(tableF[opcode & 0x00FFu]))();
     }
 
-    void CPU::opNull()
+    void CPU::opNull() const
     {
         return;
     }

@@ -171,7 +171,7 @@ namespace chip8
         void TableF();
         
         /// \brief Do nothing instruction
-        void opNull();
+        void opNull() const;
 
     private:
         Memory memory_;
