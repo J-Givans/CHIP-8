@@ -1,3 +1,6 @@
+find_package(Microsoft.GSL REQUIRED)
+find_package(SFML 2.5.1 REQUIRED COMPONENTS sfml-system sfml-window sfml-graphics)
+
 target_link_libraries(app
     PRIVATE
         Microsoft.GSL::GSL
