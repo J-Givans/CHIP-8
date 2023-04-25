@@ -16,6 +16,9 @@ namespace chip8
     class Video
     {
     public:
+        /// \brief Default constructor
+        constexpr Video() noexcept = default;
+
         /// \brief Get the value in the video buffer at the given index
         /// \param[in] idx An index into the video buffer
         /// \returns The value in the video buffer at the given index
@@ -23,6 +26,9 @@ namespace chip8
 
         /// \brief Set the entire video buffer to zeros
         constexpr void clear() noexcept;
+
+    private:
+        std::array<std::uint32_t, VideoWidth * VideoHeight> videoBuffer = {0};
     };
 
     constexpr uint32_t& Video::operator[](size_t idx) noexcept
