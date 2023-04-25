@@ -15,6 +15,9 @@ namespace chip8
         /// \brief Default constructor
         CPU();
 
+        /// \brief Execute the fetch, decode, execute cycle of the CPU
+        void cycle();
+
         /// \brief Clear the display
         /// \details Set the entire video buffer to zeroes
         void op00E0() noexcept;
@@ -171,7 +174,7 @@ namespace chip8
         void TableF();
         
         /// \brief Do nothing instruction
-        void opNull() const;
+        void opNull();
 
     private:
         Memory memory_;

@@ -26,6 +26,28 @@ namespace chip8
         tableF[0x65] = &CPU::opFx65;
     }
 
+    void CPU::cycle()
+    {
+        // Fetch
+        opcode = gsl::narrow_cast<uint16_t>(memory_[registers_.pc] << 8u | memory_[registers_.pc + 1]);
+
+        // Increment the PC before we execute anything
+        registers_.pc += 2;
+
+        // Decode and execute
+        ((*this).*(table[(opcode & 0xF000u) >> 12u]))();
+
+        // Decrement the delay timer if it has been set
+        if (timers_.delayTimer > 0) {
+            --timers_.delayTimer;
+        }
+
+        // Decrement the sound timer if it has been set
+        if (timers_.soundTimer > 0) {
+            --timers_.soundTimer;
+        }
+    }
+
     void CPU::Table0()
     {
         // std::invoke(table0[opcode & 0x000Fu], this)?
@@ -47,7 +69,7 @@ namespace chip8
         ((*this).*(tableF[opcode & 0x00FFu]))();
     }
 
-    void CPU::opNull() const
+    void CPU::opNull()
     {
         return;
     }
