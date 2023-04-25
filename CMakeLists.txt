@@ -17,6 +17,7 @@ endif()
 
 find_package(GTest REQUIRED COMPONENTS gtest_main gmock_main)
 find_package(Microsoft.GSL REQUIRED)
+find_package(SFML 2.5.1 REQUIRED COMPONENTS sfml-system sfml-window sfml-graphics)
 
 add_executable(app src/main.cpp)
 

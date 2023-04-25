@@ -1,6 +1,9 @@
 target_link_libraries(app
     PRIVATE
         Microsoft.GSL::GSL
+        sfml-system
+        sfml-window
+        sfml-graphics
 )
 
 target_compile_features(app PRIVATE cxx_std_17)
