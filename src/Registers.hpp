@@ -22,6 +22,10 @@ namespace chip8
 
         /// \brief Default constructor
         constexpr Registers() noexcept = default;
+
+        /// \brief Jump to location nnn
+        /// \details The interpreter sets the program counter to nnn
+        void op1nnn() noexcept;
     };
 }
 

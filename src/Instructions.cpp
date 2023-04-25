@@ -20,9 +20,7 @@ namespace chip8
 
     void op1nnn(Registers& reg) noexcept
     {
-        // A jump doesn't remember its origin, so no stack interaction is required
-        std::uint16_t address = opcode & 0x0FFFu;
-        reg.pc = address;
+        reg.op1nnn();
     }
 
     void op2nnn(Stack& stack, Registers& reg)
