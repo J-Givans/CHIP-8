@@ -104,14 +104,6 @@ namespace chip8
     /// \brief Wait for a key press, and then store the value of the key pressed in Vx
     void opFx0A(Registers& reg) noexcept;
 
-    /// \brief LD DT, Vx
-    /// \brief Set the delay timer to Vx
-    void opFx15(Registers const& reg, Timers& timers) noexcept;
-
-    /// \brief LD ST, Vx
-    /// \brief Set sound timer = Vx
-    void opFx18(Registers& reg, Timers& timers);
-
     /// \brief ADD I, Vx
     /// \brief Set I = I + Vx
     void opFx1E(Registers& reg) noexcept;

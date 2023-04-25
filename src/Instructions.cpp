@@ -116,19 +116,7 @@ namespace chip8
     {
         reg.opFx0A();
     }
-
-    void opFx15(Registers const& reg, Timers& timers) noexcept
-    {
-        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
-        timers.delayTimer = reg[Vx];
-    }
-
-    void opFx18(Registers& reg, Timers& timers)
-    {
-        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
-        timers.soundTimer = reg[Vx];
-    }
-
+    
     void opFx1E(Registers& reg) noexcept
     {
         reg.opFx1E();

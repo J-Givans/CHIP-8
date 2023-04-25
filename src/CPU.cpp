@@ -60,6 +60,18 @@ namespace chip8
         registers_.opFx07(timers_);
     }
 
+    void CPU::opFx15() noexcept
+    {
+        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+        timers_.delayTimer = registers_[Vx];
+    }
+
+    void CPU::opFx18() noexcept
+    {
+        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+        timers_.soundTimer = registers_[Vx];
+    }
+
     void CPU::opFx33() noexcept
     {
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;

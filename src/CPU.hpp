@@ -34,6 +34,14 @@ namespace chip8
         /// \brief Set Vx = delay timer value
         void opFx07() noexcept;
 
+        /// \brief LD DT, Vx
+        /// \brief Set the delay timer to Vx
+        void opFx15() noexcept;
+
+        /// \brief LD ST, Vx
+        /// \brief Set sound timer = Vx
+        void opFx18() noexcept;
+
         /// \brief LD B, Vx
         /// \brief Store BCD representation of Vx in memory locations I, I + 1, and I + 2
         /// \details The interpreter takes the decimal value of Vx and places the hundreds digit in memory at location I, 
