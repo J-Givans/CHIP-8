@@ -18,6 +18,10 @@ namespace chip8
         /// \brief Store registers V0 through Vx in memory starting at location I
         void opFx55() noexcept;
 
+        /// \brief LD Vx, [I]
+        /// \brief Read registers V0 through Vx from memory starting at location I
+        void opFx65() noexcept;
+
     private:
         Memory memory_;
         Registers registers_;

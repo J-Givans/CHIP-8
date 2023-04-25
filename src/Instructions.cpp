@@ -184,13 +184,4 @@ namespace chip8
         // 100s place
         memory.m_memory[reg.getIndexRegister()] = value % 10;
     }
-
-    void opFx65(Memory const& memory, Registers& reg)
-    {
-        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
-
-        for (uint8_t i = 0; i <= Vx; ++i) {
-            reg[i] = memory.m_memory[reg.getIndexRegister() + i];
-        }
-    }
 }
