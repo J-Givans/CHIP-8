@@ -20,13 +20,13 @@ namespace chip8
 
             for (unsigned col = 0; col < 8; ++col) {
                 uint8_t spritePixel = spriteByte & (0x80u >> col);
-                uint32_t* screenPixel = &videoBuffer[(yPos + row) * VideoWidth + (xPos + col)];
+                uint32_t& screenPixel = videoBuffer[(yPos + row) * VideoWidth + (xPos + col)];
 
-                if (spritePixel and *screenPixel == 0xFFFFFFFF) {
+                if (spritePixel and screenPixel == 0xFFFFFFFF) {
                     reg[0xF] = 1;
                 }
                 else if (spritePixel) {
-                    *screenPixel ^= 0xFFFFFFFF;
+                    screenPixel ^= 0xFFFFFFFF;
                 }
             }
         }
