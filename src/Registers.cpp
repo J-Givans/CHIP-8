@@ -19,4 +19,14 @@ namespace chip8
             pc += 2;
         }
     }
+
+    void Registers::op4xkk() noexcept
+    {
+        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+        uint8_t byte = opcode & 0x00FFu;
+
+        if (byteRegisters[Vx] != byte) {
+            pc += 2;
+        }
+    }
 }
