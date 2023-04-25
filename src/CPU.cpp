@@ -13,6 +13,14 @@ namespace chip8
         registers_.setProgramCounter(stack_.top());
     }
 
+    void CPU::op2nnn() noexcept
+    {
+        std::uint16_t address = opcode & 0x0FFFu;
+
+        stack_.push(registers_.getProgramCounter());
+        registers_.setProgramCounter(address);
+    }
+
     void CPU::opFx33() noexcept
     {
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;

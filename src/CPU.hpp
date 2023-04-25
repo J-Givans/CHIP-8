@@ -19,6 +19,9 @@ namespace chip8
         /// \param[in] reg A reference to the register containing the program counter
         void op00EE() noexcept;
 
+        /// \brief Call subroutine at nnn
+        void op2nnn() noexcept;
+
         /// \brief LD B, Vx
         /// \brief Store BCD representation of Vx in memory locations I, I + 1, and I + 2
         /// \details The interpreter takes the decimal value of Vx and places the hundreds digit in memory at location I, 

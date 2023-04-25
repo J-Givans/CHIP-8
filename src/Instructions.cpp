@@ -17,14 +17,6 @@ namespace chip8
         reg.op1nnn();
     }
 
-    void op2nnn(Stack& stack, Registers& reg)
-    {
-        std::uint16_t address = opcode & 0x0FFFu;
-
-        stack.push(reg.getProgramCounter());
-        reg.setProgramCounter(address);
-    }
-
     void op3xkk(Registers& reg) noexcept
     {
         reg.op3xkk();

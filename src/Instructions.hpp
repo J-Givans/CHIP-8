@@ -18,9 +18,6 @@ namespace chip8
     /// \details The interpreter sets the program counter to nnn
     void op1nnn(Registers& reg) noexcept;
 
-    /// \brief Call subroutine at nnn
-    void op2nnn(Stack& stack, Registers& reg);
-
     /// \brief Skip next instruction if Vx = kk
     void op3xkk(Registers& reg) noexcept;
 
