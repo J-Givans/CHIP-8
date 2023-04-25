@@ -1,6 +1,9 @@
 #include "Registers.hpp"
 #include "Instructions.hpp"
 #include "Keypad.hpp"
+#include "Memory.hpp"
+
+#include <gsl/narrow>
 
 namespace chip8
 {
@@ -285,6 +288,6 @@ namespace chip8
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;
         uint8_t digit = byteRegisters[Vx];
 
-        idxRegister = FontSetStartAddress + (5 * digit);
+        idxRegister = gsl::narrow_cast<uint16_t>(FontSetStartAddress + (5 * digit));
     }
 }
