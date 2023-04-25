@@ -150,6 +150,16 @@ namespace chip8
         }
     }
 
+    void CPU::opEx9E() noexcept
+    {
+        registers_.opEx9E();
+    }
+
+    void CPU::opExA1() noexcept
+    {
+        registers_.opExA1();
+    }
+
     void CPU::opFx07() noexcept
     {
         registers_.opFx07(timers_);

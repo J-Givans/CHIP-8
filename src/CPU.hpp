@@ -111,6 +111,14 @@ namespace chip8
         /// \brief Display n-byte sprite starting at memory location I at (Vx, Vy) and set VF = collision
         void opDxyn() noexcept;
 
+        /// \brief SKP Vx
+        /// \brief Skip the next instruction if the key with the value of Vx is pressed
+        void opEx9E() noexcept;
+
+        /// \brief SKNP Vx
+        /// \brief Skip the next instruction if the key with the value of Vx is not pressed
+        void opExA1() noexcept;
+
         /// \brief LD Vx, DT
         /// \brief Set Vx = delay timer value
         void opFx07() noexcept;
