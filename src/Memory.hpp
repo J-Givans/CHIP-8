@@ -40,6 +40,16 @@ namespace chip8
         /// \brief Default constructor
         constexpr Memory() noexcept;
 
+        /// \brief Get the value in the memory location referenced by the given index
+        /// \param[in] index The index into the memory block
+        /// \returns The value in the memory location at index
+        constexpr uint8_t& operator[](uint8_t index) noexcept;
+        
+        /// \brief Get the value in the memory location referenced by the given index
+        /// \param[in] index The index into the memory block
+        /// \returns The value in the memory location at index
+        constexpr uint8_t operator[](uint8_t index) const noexcept;
+
         /// \brief Load the font set into the memory buffer
         constexpr void loadFontSet() noexcept;
 
@@ -51,6 +61,18 @@ namespace chip8
     constexpr Memory::Memory() noexcept
     {
         loadFontSet();
+    }
+
+    constexpr uint8_t& Memory::operator[](uint8_t index) noexcept
+    {
+        Expects(index >= 0 and index < m_memory.size());
+        return m_memory[index];
+    }
+
+    constexpr uint8_t Memory::operator[](uint8_t index) const noexcept
+    {
+        Expects(index >= 0 and index < m_memory.size());
+        return m_memory[index];
     }
 
     constexpr void Memory::loadFontSet() noexcept
