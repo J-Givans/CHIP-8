@@ -51,7 +51,7 @@ namespace chip8
 
     /// \brief OR Vx, Vy
     /// \brief Set Vx = Vx or Vy
-    void op8xy1(Registers& reg);
+    void op8xy1(Registers& reg) noexcept;
 
     /// \brief AND Vx, Vy
     /// \brief Set Vx = Vx AND Vy
