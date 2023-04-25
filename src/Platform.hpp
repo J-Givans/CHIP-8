@@ -22,6 +22,12 @@ namespace chip8
 
     private:
         sf::RenderWindow window_;
+
+        /// \brief Handle events that occur whenever a key has been pressed
+        void handleOnKeyPressedEvents(std::array<uint8_t, 16>& keys);
+
+        /// \brief Handle events that occur whenever a key has been released
+        void handleOnKeyReleasedEvents(std::array<uint8_t, 16>& keys) const;
     };
 }
 
