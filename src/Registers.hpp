@@ -33,6 +33,10 @@ namespace chip8
         /// \brief SNE Vx, byte
         /// \brief Skip next instruction if Vx != kk
         void op4xkk() noexcept;
+
+        /// \brief SE Vx, Vy
+        /// \brief Skip next instruction if Vx = Vy
+        void op5xy0() noexcept;
     };
 }
 

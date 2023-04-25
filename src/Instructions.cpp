@@ -43,12 +43,7 @@ namespace chip8
 
     void op5xy0(Registers& reg)
     {
-        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
-        uint8_t Vy = (opcode & 0x00F0u) >> 4u;
-
-        if (reg.byteRegisters[Vx] == reg.byteRegisters[Vy]) {
-            reg.pc += 2;
-        }
+        reg.op5xy0();
     }
 
     void op6xkk(Registers& reg)
