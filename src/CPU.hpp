@@ -14,6 +14,10 @@ namespace chip8
     public:
         CPU() = default;
 
+        /// \brief LD [I], Vx
+        /// \brief Store registers V0 through Vx in memory starting at location I
+        void opFx55() noexcept;
+
     private:
         Memory memory_;
         Registers registers_;
