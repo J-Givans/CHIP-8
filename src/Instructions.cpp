@@ -33,12 +33,7 @@ namespace chip8
 
     void op3xkk(Registers& reg)
     {
-        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
-        uint8_t byte = opcode & 0x00FFu;
-
-        if (reg.byteRegisters[Vx] == byte) {
-            reg.pc += 2;
-        }
+        reg.op3xkk();
     }
 
     void op4xkk(Registers& reg)

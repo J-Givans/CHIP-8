@@ -26,6 +26,9 @@ namespace chip8
         /// \brief Jump to location nnn
         /// \details The interpreter sets the program counter to nnn
         void op1nnn() noexcept;
+
+        /// \brief Skip next instruction if Vx = kk
+        void op3xkk() noexcept;
     };
 }
 
