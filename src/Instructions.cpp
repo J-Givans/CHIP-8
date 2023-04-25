@@ -48,10 +48,7 @@ namespace chip8
 
     void op6xkk(Registers& reg)
     {
-        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
-        uint8_t byte = opcode & 0x00FFu;
-
-        reg.byteRegisters[Vx] = byte;
+        reg.op6xkk();
     }
 
     void op7xkk(Registers& reg)
