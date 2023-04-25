@@ -113,7 +113,7 @@ namespace chip8
 
     /// \brief SKNP Vx
     /// \brief Skip the next instruction if the key with the value of Vx is not pressed
-    void opExA1(Registers& reg);
+    void opExA1(Registers& reg) noexcept;
 
     /// \brief LD Vx, DT
     /// \brief Set Vx = delay timer value

@@ -155,13 +155,9 @@ namespace chip8
         reg.opEx9E();
     }
 
-    void opExA1(Registers& reg)
+    void opExA1(Registers& reg) noexcept
     {
-        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
-
-        if (uint8_t key = reg.byteRegisters[Vx]; not KeyPad[key]) {
-            reg.pc += 2;
-        }
+        reg.opExA1();
     }
 
     void opFx07(Registers& reg, CPU const& cpu)

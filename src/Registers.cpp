@@ -196,4 +196,13 @@ namespace chip8
             pc += 2;
         }
     }
+
+    void Registers::opExA1() noexcept
+    {
+        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+
+        if (uint8_t key = byteRegisters[Vx]; not KeyPad[key]) {
+            pc += 2;
+        }
+    }
 }

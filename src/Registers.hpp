@@ -107,6 +107,10 @@ namespace chip8
         /// \brief SKP Vx
         /// \brief Skip the next instruction if the key with the value of Vx is pressed
         void opEx9E() noexcept;
+
+        /// \brief SKNP Vx
+        /// \brief Skip the next instruction if the key with the value of Vx is not pressed
+        void opExA1() noexcept;
     };
 }
 
