@@ -33,7 +33,7 @@ namespace chip8
 
     constexpr uint32_t& Video::operator[](size_t idx) noexcept
     {
-        Expects(idx >= 0 and idx < videoBuffer.size() and "Index out of bounds");
+        Expects(idx < videoBuffer.size() and "Index out of bounds");
         return videoBuffer[idx];
     }
 
