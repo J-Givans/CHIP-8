@@ -8,6 +8,8 @@
 #include <cstdint>
 #include <random>
 
+#include <gsl/assert>
+
 namespace chip8
 {
     inline std::random_device rd;
@@ -31,6 +33,16 @@ namespace chip8
         /// \brief Get the current value of the program counter
         /// \returns The value of the program counter
         constexpr std::uint16_t getProgramCounter() const noexcept;
+
+        /// \brief Get the value of the 8-bit register at the given index (read and write access)
+        /// \param[in] index The index of the 8-bit register
+        /// \returns The value of the 8-bit register
+        constexpr uint8_t& operator[](uint8_t index) noexcept;
+
+        /// \brief Get the value of the 8-bit register at the given index (read-only access)
+        /// \param[in] index The index of the 8-bit register
+        /// \returns The value of the 8-bit register
+        constexpr uint8_t const& operator[](uint8_t index) const noexcept;
 
         /// \brief Jump to location nnn
         /// \details The interpreter sets the program counter to nnn
@@ -146,6 +158,18 @@ namespace chip8
     constexpr std::uint16_t Registers::getProgramCounter() const noexcept
     {
         return pc;
+    }
+
+    constexpr uint8_t& Registers::operator[](uint8_t index) noexcept
+    {
+        Expects(index >= 0 and index <= 15);
+        return byteRegisters[index];
+    }
+
+    constexpr uint8_t const& Registers::operator[](uint8_t index) const noexcept
+    {
+        Expects(index >= 0 and index <= 15);
+        return byteRegisters[index];
     }
 }
 
