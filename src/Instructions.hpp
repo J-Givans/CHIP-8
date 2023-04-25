@@ -27,23 +27,23 @@ namespace chip8
     void op2nnn(Stack& stack, Registers& reg);
 
     /// \brief Skip next instruction if Vx = kk
-    void op3xkk(Registers& reg);
+    void op3xkk(Registers& reg) noexcept;
 
     /// \brief SNE Vx, byte
     /// \brief Skip next instruction if Vx != kk
-    void op4xkk(Registers& reg);
+    void op4xkk(Registers& reg) noexcept;
 
     /// \brief SE Vx, Vy
     /// \brief Skip next instruction if Vx = Vy
-    void op5xy0(Registers& reg);
+    void op5xy0(Registers& reg) noexcept;
 
     /// \brief LD Vx, byte
     /// \brief Set Vx = kk
-    void op6xkk(Registers& reg);
+    void op6xkk(Registers& reg) noexcept;
 
     /// \brief ADD Vx, byte
     /// \brief Set Vx = Vk + kk
-    void op7xkk(Registers& reg);
+    void op7xkk(Registers& reg) noexcept;
 
     /// \brief LD Vx, Vy
     /// \brief Set Vx = Vy

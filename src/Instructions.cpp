@@ -31,27 +31,27 @@ namespace chip8
         reg.pc = address;
     }
 
-    void op3xkk(Registers& reg)
+    void op3xkk(Registers& reg) noexcept
     {
         reg.op3xkk();
     }
 
-    void op4xkk(Registers& reg)
+    void op4xkk(Registers& reg) noexcept
     {
         reg.op4xkk();
     }
 
-    void op5xy0(Registers& reg)
+    void op5xy0(Registers& reg) noexcept
     {
         reg.op5xy0();
     }
 
-    void op6xkk(Registers& reg)
+    void op6xkk(Registers& reg) noexcept
     {
         reg.op6xkk();
     }
 
-    void op7xkk(Registers& reg)
+    void op7xkk(Registers& reg) noexcept
     {
         reg.op7xkk();
     }
