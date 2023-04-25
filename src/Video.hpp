@@ -6,6 +6,7 @@
 
 #include <array>
 #include <cstdint>
+#include <gsl/assert>
 
 namespace chip8
 {
@@ -15,11 +16,20 @@ namespace chip8
     class Video
     {
     public:
-        std::array<std::uint32_t, VideoWidth * VideoHeight> videoBuffer = {0};
+        /// \brief Get the value in the video buffer at the given index
+        /// \param[in] idx An index into the video buffer
+        /// \returns The value in the video buffer at the given index
+        constexpr uint32_t& operator[](size_t idx) noexcept;
 
         /// \brief Set the entire video buffer to zeros
         constexpr void clear() noexcept;
     };
+
+    constexpr uint32_t& Video::operator[](size_t idx) noexcept
+    {
+        Expects(idx >= 0 and idx < videoBuffer.size() and "Index out of bounds");
+        return videoBuffer[idx];
+    }
 
     constexpr void Video::clear() noexcept
     {
