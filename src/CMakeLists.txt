@@ -11,10 +11,22 @@ target_include_directories(app PRIVATE "${PROJECT_SOURCE_DIR}/src")
 
 target_sources(app 
     PRIVATE
+        CPU.hpp
+        CPU.cpp
         FontSet.hpp
         FontSet.cpp
+        Instructions.hpp
+        Instructions.cpp
+        Keypad.hpp
+        Keypad.cpp
         Memory.hpp
         Memory.cpp
+        Registers.hpp
+        Registers.cpp
+        Stack.hpp
+        Stack.cpp
+        Timers.hpp
+        Timers.cpp
         Video.hpp
         Video.cpp
 )
