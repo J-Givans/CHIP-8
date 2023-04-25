@@ -13,7 +13,7 @@ namespace chip8
     }
 
     [[nodiscard]]
-    bool Platform::processInput(uint8_t* keys)
+    bool Platform::processInput(std::array<uint8_t, 16>& keys)
     {
         bool quit = false;
 

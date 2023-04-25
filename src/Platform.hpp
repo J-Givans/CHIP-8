@@ -5,6 +5,7 @@
 
 #include <cstdint>
 #include <string>
+#include <array>
 
 namespace chip8
 {
@@ -18,7 +19,7 @@ namespace chip8
         Platform(std::string const& title, unsigned windowWidth, unsigned windowHeight);
 
         [[nodiscard]]
-        bool processInput(uint8_t* keys);
+        bool processInput(std::array<uint8_t, 16>& keys);
 
     private:
         sf::RenderWindow window_;
