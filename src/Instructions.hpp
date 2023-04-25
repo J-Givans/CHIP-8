@@ -11,22 +11,6 @@ namespace chip8
 {
     inline std::uint16_t opcode {};
 
-    /// \brief SNE Vx, Vy
-    /// \brief Skip next instruction if Vx != Vy
-    void op9xy0(Registers& reg) noexcept;
-
-    /// \brief LD I, addr
-    /// \brief Set I = nnn
-    void opAnnn(Registers& reg) noexcept;
-
-    /// \brief JP V0, addr
-    /// \brief Jump to location nnn + V0
-    void opBnnn(Registers& reg) noexcept;
-
-    /// \brief RND Vx, byte
-    /// \brief Set Vx = random byte AND kk
-    void opCxkk(Registers& reg) noexcept;
-
     /// \brief SKP Vx
     /// \brief Skip the next instruction if the key with the value of Vx is pressed
     void opEx9E(Registers& reg) noexcept;
