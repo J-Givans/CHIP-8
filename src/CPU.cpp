@@ -182,6 +182,16 @@ namespace chip8
         timers_.soundTimer = registers_[Vx];
     }
 
+    void CPU::opFx1E() noexcept
+    {
+        registers_.opFx1E();
+    }
+
+    void CPU::opFx29() noexcept
+    {
+        registers_.opFx29();
+    }
+
     void CPU::opFx33() noexcept
     {
         uint8_t Vx = (opcode & 0x0F00u) >> 8u;

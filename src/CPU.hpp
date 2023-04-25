@@ -135,6 +135,14 @@ namespace chip8
         /// \brief Set sound timer = Vx
         void opFx18() noexcept;
 
+        /// \brief ADD I, Vx
+        /// \brief Set I = I + Vx
+        void opFx1E() noexcept;
+
+        /// \brief LD F, Vx
+        /// \brief Set I = location of sprite for digit Vx
+        void opFx29() noexcept;
+
         /// \brief LD B, Vx
         /// \brief Store BCD representation of Vx in memory locations I, I + 1, and I + 2
         /// \details The interpreter takes the decimal value of Vx and places the hundreds digit in memory at location I, 
