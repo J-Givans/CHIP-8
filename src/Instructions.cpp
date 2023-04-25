@@ -103,12 +103,7 @@ namespace chip8
 
     void op9xy0(Registers& reg) noexcept
     {
-        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
-        uint8_t Vy = (opcode & 0x00F0u) >> 4u;
-
-        if (reg.byteRegisters[Vx] != reg.byteRegisters[Vy]) {
-            reg.pc += 2;
-        }
+        reg.op9xy0();
     }
 
     void opAnnn(Registers& reg) noexcept

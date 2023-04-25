@@ -155,4 +155,14 @@ namespace chip8
         
         byteRegisters[Vx] <<= 1;
     }
+
+    void Registers::op9xy0() noexcept
+    {
+        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+        uint8_t Vy = (opcode & 0x00F0u) >> 4u;
+
+        if (byteRegisters[Vx] != byteRegisters[Vy]) {
+            pc += 2;
+        }
+    }
 }

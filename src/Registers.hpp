@@ -87,6 +87,10 @@ namespace chip8
         /// \brief Set Vx = Vx SHL 1
         /// \details If the most-significant bit of Vx is 1, then VF is set to 1, otherwise to 0. Then Vx is multiplied by 2
         void op8xyE() noexcept;
+
+        /// \brief SNE Vx, Vy
+        /// \brief Skip next instruction if Vx != Vy
+        void op9xy0() noexcept;
     };
 }
 
