@@ -99,6 +99,10 @@ namespace chip8
         /// \brief JP V0, addr
         /// \brief Jump to location nnn + V0
         void opBnnn() noexcept;
+
+        /// \brief RND Vx, byte
+        /// \brief Set Vx = random byte AND kk
+        void opCxkk() noexcept;
     };
 }
 

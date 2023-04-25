@@ -118,10 +118,7 @@ namespace chip8
 
     void opCxkk(Registers& reg) noexcept
     {
-        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
-        uint8_t byte = opcode & 0x00FFu;
-
-        reg.byteRegisters[Vx] = distribution(generator) & byte;
+        reg.opCxkk();
     }
 
     void opDxyn(Registers& reg, Memory& mem, Video& video)
