@@ -166,63 +166,9 @@ namespace chip8
         reg.byteRegisters[Vx] = cpu.delayTimer;
     }
 
-    void opFx0A(Registers& reg)
+    void opFx0A(Registers& reg) noexcept
     {
-        // Decrementing the pc by 2 whenever a key pad value is not detected
-        // has the same effect as running the same instruction repeatedly.
-        // This is the easiest way to wait
-
-        if (uint8_t Vx = (opcode & 0x0F00u) >> 8u; KeyPad[0]) {
-            reg.byteRegisters[Vx] = 0;
-        }
-        else if (KeyPad[1]) {
-            reg.byteRegisters[Vx] = 1;
-        }
-        else if (KeyPad[2]) {
-            reg.byteRegisters[Vx] = 2;
-        }
-        else if (KeyPad[3]) {
-            reg.byteRegisters[Vx] = 3;
-        }
-        else if (KeyPad[4]) {
-            reg.byteRegisters[Vx] = 4;
-        }
-        else if (KeyPad[5]) {
-            reg.byteRegisters[Vx] = 5;
-        }
-        else if (KeyPad[6]) {
-            reg.byteRegisters[Vx] = 6;
-        }
-        else if (KeyPad[7]) {
-            reg.byteRegisters[Vx] = 7;
-        }
-        else if (KeyPad[8]) {
-            reg.byteRegisters[Vx] = 8;
-        }
-        else if (KeyPad[9]) {
-            reg.byteRegisters[Vx] = 9;
-        }
-        else if (KeyPad[10]) {
-            reg.byteRegisters[Vx] = 10;
-        }
-        else if (KeyPad[11]) {
-            reg.byteRegisters[Vx] = 11;
-        }
-        else if (KeyPad[12]) {
-            reg.byteRegisters[Vx] = 12;
-        }
-        else if (KeyPad[13]) {
-            reg.byteRegisters[Vx] = 13;
-        }
-        else if (KeyPad[14]) {
-            reg.byteRegisters[Vx] = 14;
-        }
-        else if (KeyPad[15]) {
-            reg.byteRegisters[Vx] = 15;
-        }
-        else {
-            reg.pc -= 2;
-        }
+        reg.opFx0A();
     }
 
     void opFx15(Registers const& reg, CPU& cpu) noexcept

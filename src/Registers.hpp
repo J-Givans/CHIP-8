@@ -111,6 +111,10 @@ namespace chip8
         /// \brief SKNP Vx
         /// \brief Skip the next instruction if the key with the value of Vx is not pressed
         void opExA1() noexcept;
+
+        /// \brief LD Vx, K
+        /// \brief Wait for a key press, and then store the value of the key pressed in Vx
+        void opFx0A() noexcept;
     };
 }
 

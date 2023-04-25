@@ -205,4 +205,63 @@ namespace chip8
             pc += 2;
         }
     }
+
+    void Registers::opFx0A() noexcept
+    {
+        // Decrementing the pc by 2 whenever a key pad value is not detected
+        // has the same effect as running the same instruction repeatedly.
+        // This is the easiest way to wait
+
+        if (uint8_t Vx = (opcode & 0x0F00u) >> 8u; KeyPad[0]) {
+            byteRegisters[Vx] = 0;
+        }
+        else if (KeyPad[1]) {
+            byteRegisters[Vx] = 1;
+        }
+        else if (KeyPad[2]) {
+            byteRegisters[Vx] = 2;
+        }
+        else if (KeyPad[3]) {
+            byteRegisters[Vx] = 3;
+        }
+        else if (KeyPad[4]) {
+            byteRegisters[Vx] = 4;
+        }
+        else if (KeyPad[5]) {
+            byteRegisters[Vx] = 5;
+        }
+        else if (KeyPad[6]) {
+            byteRegisters[Vx] = 6;
+        }
+        else if (KeyPad[7]) {
+            byteRegisters[Vx] = 7;
+        }
+        else if (KeyPad[8]) {
+            byteRegisters[Vx] = 8;
+        }
+        else if (KeyPad[9]) {
+            byteRegisters[Vx] = 9;
+        }
+        else if (KeyPad[10]) {
+            byteRegisters[Vx] = 10;
+        }
+        else if (KeyPad[11]) {
+            byteRegisters[Vx] = 11;
+        }
+        else if (KeyPad[12]) {
+            byteRegisters[Vx] = 12;
+        }
+        else if (KeyPad[13]) {
+            byteRegisters[Vx] = 13;
+        }
+        else if (KeyPad[14]) {
+            byteRegisters[Vx] = 14;
+        }
+        else if (KeyPad[15]) {
+            byteRegisters[Vx] = 15;
+        }
+        else {
+            pc -= 2;
+        }
+    }
 }
