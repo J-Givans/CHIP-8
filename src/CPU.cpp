@@ -38,7 +38,7 @@ namespace chip8
 
             for (unsigned col = 0; col < 8; ++col) {
                 uint8_t spritePixel = spriteByte & (0x80u >> col);
-                uint32_t& screenPixel = video_.videoBuffer[(yPos + row) * VideoWidth + (xPos + col)];
+                uint32_t& screenPixel = video_[(yPos + row) * VideoWidth + (xPos + col)];
 
                 if (spritePixel and screenPixel == 0xFFFFFFFF) {
                     registers_[0xF] = 1;
