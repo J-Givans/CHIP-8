@@ -83,17 +83,7 @@ namespace chip8
 
     void op8xy5(Registers& reg) noexcept
     {
-        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
-        uint8_t Vy = (opcode & 0x00F0u) >> 4u;
-
-        if (reg.byteRegisters[Vx] > reg.byteRegisters[Vy]) {
-            reg.byteRegisters[0xF] = 1;
-        }
-        else {
-            reg.byteRegisters[0xF] = 0;
-        }
-
-        reg.byteRegisters[Vx] -= reg.byteRegisters[Vy];
+        reg.op8xy5();
     }
 
     void op8xy6(Registers& reg) noexcept

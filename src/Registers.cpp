@@ -103,4 +103,19 @@ namespace chip8
 
         byteRegisters[Vx] = sum & 0xFFu;
     }
+
+    void Registers::op8xy5() noexcept
+    {
+        uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+        uint8_t Vy = (opcode & 0x00F0u) >> 4u;
+
+        if (byteRegisters[Vx] > byteRegisters[Vy]) {
+            byteRegisters[0xF] = 1;
+        }
+        else {
+            byteRegisters[0xF] = 0;
+        }
+
+        byteRegisters[Vx] -= byteRegisters[Vy];
+    }
 }
