@@ -108,8 +108,7 @@ namespace chip8
 
     void opAnnn(Registers& reg) noexcept
     {
-        uint16_t address = opcode & 0x0FFFu;
-        reg.idxRegister = address;
+        reg.opAnnn();
     }
 
     void opBnnn(Registers& reg) noexcept

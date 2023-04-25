@@ -91,6 +91,10 @@ namespace chip8
         /// \brief SNE Vx, Vy
         /// \brief Skip next instruction if Vx != Vy
         void op9xy0() noexcept;
+
+        /// \brief LD I, addr
+        /// \brief Set I = nnn
+        void opAnnn() noexcept;
     };
 }
 
