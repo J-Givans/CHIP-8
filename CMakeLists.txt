@@ -15,8 +15,7 @@ if (CCACHE)
     set(CMAKE_CXX_COMPILER_LAUNCHER "${CCACHE}")
 endif()
 
-find_package(GTest REQUIRED COMPONENTS gtest_main gmock_main)
-
 add_executable(app src/main.cpp)
 
 add_subdirectory(src)
+add_subdirectory(test)
