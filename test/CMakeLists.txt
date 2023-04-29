@@ -13,8 +13,10 @@ target_include_directories(Tests PUBLIC "${PROJECT_SOURCE_DIR}/include")
 target_sources(Tests
     PUBLIC
         MemoryTest.cpp
+        VideoTest.cpp
     PRIVATE
         "${PROJECT_SOURCE_DIR}/include/Memory.hpp"
+        "${PROJECT_SOURCE_DIR}/include/Video.hpp"
 )
 
 target_compile_features(Tests PRIVATE cxx_std_17)
