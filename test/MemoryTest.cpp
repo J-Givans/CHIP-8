@@ -16,8 +16,13 @@ TEST(LoadFontSetTest, LoadsFontSetIntoMemoryBuffer)
     ASSERT_TRUE(std::equal(buffer.cbegin(), buffer.cend(), FontSet.cbegin()));
 }
 
-TEST(AMemoryTest, ContainsFontSetAtInstantiation)
+class AMemoryTest : public ::testing::Test
 {
+public:
     Memory memory;
+};
+
+TEST_F(AMemoryTest, ContainsFontSetAtInstantiation)
+{
     ASSERT_TRUE(std::equal(FontSet.cbegin(), FontSet.cend(), memory.cbegin() + FontSetStartAddress));
 }
