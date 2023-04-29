@@ -1,4 +1,5 @@
 #include "Memory.hpp"
+#include "FontSet.hpp"
 
 #include <gtest/gtest.h>
 
@@ -9,8 +10,14 @@ using namespace chip8;
 
 TEST(LoadFontSetTest, LoadsFontSetIntoMemoryBuffer)
 {
-    std::array<uint8_t, 80> buffer;
+    std::array<uint8_t, FontSetSize> buffer;
     loadFontSet(buffer, 0);
     
     ASSERT_TRUE(std::equal(buffer.cbegin(), buffer.cend(), FontSet.cbegin()));
+}
+
+TEST(AMemoryTest, ContainsFontSetAtInstantiation)
+{
+    Memory memory;
+    ASSERT_TRUE(std::equal(FontSet.cbegin(), FontSet.cend(), memory.m_memory.cbegin() + FontSetStartAddress));
 }
