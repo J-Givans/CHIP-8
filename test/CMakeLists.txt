@@ -16,7 +16,9 @@ target_sources(Tests
         VideoTest.cpp
     PRIVATE
         "${PROJECT_SOURCE_DIR}/include/Memory.hpp"
+        
         "${PROJECT_SOURCE_DIR}/include/Video.hpp"
+        "${PROJECT_SOURCE_DIR}/src/Video.cpp"
 )
 
 target_compile_features(Tests PRIVATE cxx_std_17)
