@@ -18,18 +18,18 @@ namespace chip8
     /// \tparam size The size of the memory buffer
     /// \param[in] memoryBuffer The memory buffer
     template <std::size_t size>
-    constexpr void loadFontSet(std::array<uint8_t, size>& memoryBuffer) noexcept
+    constexpr void loadFontSet(std::array<uint8_t, size>& memoryBuffer, uint8_t const from) noexcept
     {
-        Expects(memoryBuffer.size() > FontSetSize);
+        Expects(memoryBuffer.size() >= FontSetSize and "Buffer capacity cannot accomodate font set");
 
         std::size_t i {0};
         
         for (auto const& font : FontSet) {
-            memoryBuffer[FontSetStartAddress + i] = font;
+            memoryBuffer[from + i] = font;
             ++i;
         }
 
-        Ensures(std::equal(FontSet.cbegin(), FontSet.cend(), memoryBuffer.cbegin() + FontSetStartAddress));
+        Ensures(std::equal(FontSet.cbegin(), FontSet.cend(), memoryBuffer.cbegin() + from));
     }
 
     class Memory
@@ -77,7 +77,7 @@ namespace chip8
 
     constexpr void Memory::loadFontSet() noexcept
     {
-        chip8::loadFontSet(m_memory);
+        chip8::loadFontSet(m_memory, FontSetStartAddress);
     }
 }
 
