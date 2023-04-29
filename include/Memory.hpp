@@ -50,6 +50,18 @@ namespace chip8
         /// \returns The value in the memory location at index
         constexpr uint8_t operator[](uint16_t index) const noexcept;
 
+        /// \brief Returns an iterator to the first element in the memory buffer
+        constexpr auto begin() noexcept;
+        
+        /// \brief Returns a const-iterator to the first element in the memory buffer
+        constexpr auto cbegin() const noexcept;
+
+        /// \brief Returns an iterator to the first element past the end of the memory buffer
+        constexpr auto end() noexcept;
+        
+        /// \brief Returns a const-iterator to the first element past the end of the memory buffer
+        constexpr auto cend() const noexcept;
+
         /// \brief Load the font set into the memory buffer
         constexpr void loadFontSet() noexcept;
 
@@ -78,6 +90,26 @@ namespace chip8
     constexpr void Memory::loadFontSet() noexcept
     {
         chip8::loadFontSet(m_memory, FontSetStartAddress);
+    }
+
+    constexpr auto Memory::begin() noexcept
+    {
+        return m_memory.begin();
+    }
+
+    constexpr auto Memory::cbegin() const noexcept
+    {
+        return m_memory.cbegin();
+    }
+
+    constexpr auto Memory::end() noexcept
+    {
+        return m_memory.end();
+    }
+
+    constexpr auto Memory::cend() const noexcept
+    {
+        return m_memory.cend();
     }
 }
 
