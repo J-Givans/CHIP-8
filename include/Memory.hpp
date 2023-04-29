@@ -35,8 +35,6 @@ namespace chip8
     class Memory
     {
     public:
-        std::array<std::uint8_t, 1024 * 4> m_memory = {0};
-
         /// \brief Default constructor
         constexpr Memory() noexcept;
 
@@ -68,6 +66,9 @@ namespace chip8
         /// \brief Load a ROM into the memory buffer
         /// \param[in] filename The path to the ROM file
         void loadRom(char const* filename);
+    
+    private:
+        std::array<std::uint8_t, 1024 * 4> m_memory = {0};
     };
 
     constexpr Memory::Memory() noexcept
