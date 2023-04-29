@@ -13,28 +13,29 @@ target_compile_features(app PRIVATE cxx_std_17)
 
 target_compile_options(app PRIVATE -Wall -Wextra -Werror -Wundef -Wconversion)
 
-target_include_directories(app PRIVATE "${PROJECT_SOURCE_DIR}/src")
+target_include_directories(app PRIVATE "${PROJECT_SOURCE_DIR}/include")
 
 target_sources(app 
+    PUBLIC
+        ${PROJECT_SOURCE_DIR}/include/CPU.hpp
+        ${PROJECT_SOURCE_DIR}/include/FontSet.hpp
+        ${PROJECT_SOURCE_DIR}/include/Instructions.hpp
+        ${PROJECT_SOURCE_DIR}/include/Keypad.hpp
+        ${PROJECT_SOURCE_DIR}/include/Memory.hpp
+        ${PROJECT_SOURCE_DIR}/include/Registers.hpp
+        ${PROJECT_SOURCE_DIR}/include/Stack.hpp
+        ${PROJECT_SOURCE_DIR}/include/Timers.hpp
+        ${PROJECT_SOURCE_DIR}/include/Video.hpp
+        ${PROJECT_SOURCE_DIR}/include/Platform.hpp
     PRIVATE
-        CPU.hpp
         CPU.cpp
-        FontSet.hpp
         FontSet.cpp
-        Instructions.hpp
         Instructions.cpp
-        Keypad.hpp
         Keypad.cpp
-        Memory.hpp
         Memory.cpp
-        Registers.hpp
         Registers.cpp
-        Stack.hpp
         Stack.cpp
-        Timers.hpp
         Timers.cpp
-        Video.hpp
         Video.cpp
-        Platform.hpp
         Platform.cpp
 )
