@@ -5,18 +5,21 @@
 
 using chip8::Stack;
 using ::testing::Eq;
+using ::testing::Test;
 
-TEST(StackTest, StackIsEmptyWhenCreated)
+class StackTest : public Test
 {
+public:
     Stack stack;
+};
 
+TEST_F(StackTest, StackIsEmptyWhenCreated)
+{
     ASSERT_THAT(stack.isEmpty(), Eq(true));
 }
 
-TEST(StackTest, PushInsertsAnElementAtTheTopOfTheStack)
+TEST_F(StackTest, PushInsertsAnElementAtTheTopOfTheStack)
 {
-    Stack stack;
-    
     stack.push(123);
     ASSERT_THAT(stack.top(),Eq(123));
     
@@ -27,18 +30,14 @@ TEST(StackTest, PushInsertsAnElementAtTheTopOfTheStack)
     ASSERT_THAT(stack.top(),Eq(345));
 }
 
-TEST(StackTest, TopReturnsTheElementLastInserted)
+TEST_F(StackTest, TopReturnsTheElementLastInserted)
 {
-    Stack stack;
-
     stack.push(1);
     ASSERT_THAT(stack.top(), Eq(1));
 }
 
-TEST(StackTest, WeCanModifyTheElementAtTheTopIfTheStackIsMutable)
+TEST_F(StackTest, WeCanModifyTheElementAtTheTopIfTheStackIsMutable)
 {
-    Stack stack;
-
     stack.push(3);
     ASSERT_THAT(stack.top(), Eq(3));
 
@@ -46,10 +45,8 @@ TEST(StackTest, WeCanModifyTheElementAtTheTopIfTheStackIsMutable)
     ASSERT_THAT(stack.top(), Eq(2));
 }
 
-TEST(StackTest, PopRemovesTheMostRecentlyInsertedElement)
+TEST_F(StackTest, PopRemovesTheMostRecentlyInsertedElement)
 {
-    Stack stack;
-
     stack.push(1);
     stack.push(2);
     stack.push(3);
@@ -58,9 +55,7 @@ TEST(StackTest, PopRemovesTheMostRecentlyInsertedElement)
     ASSERT_THAT(stack.top(), Eq(2));
 }
 
-TEST(StackTest, SizeGetsTheCapacityOfTheStack)
+TEST_F(StackTest, SizeGetsTheCapacityOfTheStack)
 {
-    Stack stack;
-
     ASSERT_THAT(stack.size(), Eq(0));
 }
