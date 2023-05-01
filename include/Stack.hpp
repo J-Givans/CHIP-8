@@ -10,8 +10,6 @@ namespace chip8
     class Stack
     {
     public:
-        std::stack<std::uint16_t, std::vector<std::uint16_t>> stack { std::vector<std::uint16_t>(16) };
-
         Stack() noexcept = default;
 
         /// \brief Remove the top element from the stack
@@ -36,6 +34,9 @@ namespace chip8
         /// \brief Get the number of elements in the stack
         /// \returns The number of elements present in the stack
         [[nodiscard]] constexpr bool size() const& noexcept;
+
+    private:
+        std::stack<std::uint16_t, std::vector<std::uint16_t>> stack { std::vector<std::uint16_t>(16) };
     };
 
     [[nodiscard]]
