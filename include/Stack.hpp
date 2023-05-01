@@ -36,7 +36,7 @@ namespace chip8
         [[nodiscard]] constexpr bool size() const& noexcept;
 
     private:
-        std::stack<std::uint16_t, std::vector<std::uint16_t>> stack { std::vector<std::uint16_t>(16) };
+        std::stack<std::uint16_t> stack;
     };
 
     [[nodiscard]]
