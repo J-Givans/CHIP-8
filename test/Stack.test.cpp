@@ -55,7 +55,7 @@ TEST_F(StackTest, PopRemovesTheMostRecentlyInsertedElement)
     ASSERT_THAT(stack.top(), Eq(2));
 }
 
-TEST_F(StackTest, SizeGetsTheCapacityOfTheStack)
+TEST_F(StackTest, SizeGetsTheNumberOfElementsInTheStack)
 {
     ASSERT_THAT(stack.size(), Eq(0));
 }
