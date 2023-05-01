@@ -28,7 +28,17 @@ namespace chip8
         /// \brief Push an element to the top of the stack
         /// \param[in] value The element to be pushed to the top of the stack
         void push(std::uint16_t value);
+
+        /// \brief Is the stack empty?
+        /// \returns true If the stack is empty, false otherwise
+        [[nodiscard]] constexpr bool isEmpty() const& noexcept;
     };
+
+    [[nodiscard]]
+    constexpr bool Stack::isEmpty() const& noexcept
+    {
+        return stack.empty();
+    }
 }
 
 #endif
