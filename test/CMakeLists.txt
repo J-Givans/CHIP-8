@@ -14,11 +14,15 @@ target_sources(Tests
     PUBLIC
         Memory.test.cpp
         Video.test.cpp
+        Stack.test.cpp
     PRIVATE
         "${PROJECT_SOURCE_DIR}/include/Memory.hpp"
         
         "${PROJECT_SOURCE_DIR}/include/Video.hpp"
         "${PROJECT_SOURCE_DIR}/src/Video.cpp"
+
+        "${PROJECT_SOURCE_DIR}/include/Stack.hpp"
+        "${PROJECT_SOURCE_DIR}/src/Stack.cpp"
 )
 
 target_compile_features(Tests PRIVATE cxx_std_17)
