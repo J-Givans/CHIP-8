@@ -12,8 +12,8 @@ target_include_directories(Tests PUBLIC "${PROJECT_SOURCE_DIR}/include")
 
 target_sources(Tests
     PUBLIC
-        MemoryTest.cpp
-        VideoTest.cpp
+        Memory.test.cpp
+        Video.test.cpp
     PRIVATE
         "${PROJECT_SOURCE_DIR}/include/Memory.hpp"
         
