@@ -13,19 +13,19 @@ namespace chip8
         Stack() noexcept = default;
 
         /// \brief Remove the top element from the stack
-        void pop();
+        void pop() &;
 
         /// \brief Get the element at the top of the stack
         /// \returns A const reference to the most-recently pushed element
-        std::uint16_t const& top() const;
+        std::uint16_t const& top() const&;
 
         /// \brief Get the element at the top of the stack
         /// \returns A reference to the most-recently pushed element
-        std::uint16_t& top();
+        std::uint16_t& top() &;
 
         /// \brief Push an element to the top of the stack
         /// \param[in] value The element to be pushed to the top of the stack
-        void push(std::uint16_t value);
+        void push(std::uint16_t value) &;
 
         /// \brief Is the stack empty?
         /// \returns true If the stack is empty, false otherwise
